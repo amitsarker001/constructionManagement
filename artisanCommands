@@ -1,0 +1,39 @@
+##
+
+##
+
+composer create-project --prefer-dist laravel/lumen pharmacy-rest-api
+
+composer require flipbox/lumen-generator
+app.php
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+
+php artisan key:generate
+
+php artisan make:model SaleDetails -fmc
+
+php artisan migrate
+
+
+#Create Dummy Post
+php artisan tinker
+
+App\Models\SaleDetails::factory()->count(10)->create()
+
+php artisan make:controller Api\SaleController
+
+php artisan make:migration create_miscellaneouses_table --create=miscellaneouses
+
+#passport Auth
+composer require dusterio/lumen-passport
+
+php artisan passport:install
+
+#http client
+composer require guzzlehttp/guzzle
+
+JWT Auth
+
+composer require tymon/jwt-auth
+
+php artisan jwt:secret
