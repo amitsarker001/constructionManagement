@@ -22,7 +22,7 @@ App\Models\SaleDetails::factory()->count(10)->create()
 
 php artisan make:controller Api\SaleController
 
-php artisan make:migration create_miscellaneouses_table --create=miscellaneouses
+php artisan make:migration create_steps_table --create=steps
 
 #passport Auth
 composer require dusterio/lumen-passport

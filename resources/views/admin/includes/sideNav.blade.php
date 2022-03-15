@@ -21,6 +21,10 @@
                 </a>
             @endif
             {{--            @if(in_array(session()->get('userSession')->user_type_id, $arr))--}}
+            <a class="nav-link" href="{{route('step')}}">
+                <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
+                Steps
+            </a>
             <a class="nav-link" href="{{route('item')}}">
                 <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
                 Items

@@ -58,6 +58,13 @@ Route::prefix('admin')->group(function () {
     Route::post('miscellaneous/miscellaneousUpdate', 'Admin\MiscellaneousController@miscellaneousUpdate')->name('miscellaneousUpdate');
     Route::get('miscellaneous/miscellaneousDelete/{id}', 'Admin\MiscellaneousController@miscellaneousDelete')->name('miscellaneousDelete');
 
+    Route::get('step', 'Admin\StepController@index')->name('step');
+    Route::get('step/create', 'Admin\StepController@create')->name('stepCreate');
+    Route::post('step/stepSave', 'Admin\StepController@stepSave')->name('stepSave');
+    Route::get('step/edit/{id}', 'Admin\StepController@edit')->name('stepEdit');
+    Route::post('step/stepUpdate', 'Admin\StepController@stepUpdate')->name('stepUpdate');
+    Route::get('step/stepDelete/{id}', 'Admin\StepController@stepDelete')->name('stepDelete');
+
 });
 
 
