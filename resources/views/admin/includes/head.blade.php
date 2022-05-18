@@ -10,7 +10,7 @@
 <meta name="description" content=""/>
 <meta name="author" content=""/>
 <title>@yield('title')</title>
-<link rel="icon" href="{{asset(('assets/images/logo.png'))}}" type="image/gif" sizes="16x16">
+<link rel="icon" href="{{asset(('assets/admin/img/logo.png'))}}" type="image/gif" sizes="16x16">
 <link href="{{asset('assets/admin/css/styles.css')}}" rel="stylesheet"/>
 <link href="{{asset('assets/admin/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet"
       crossorigin="anonymous"/>

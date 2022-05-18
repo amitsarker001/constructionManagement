@@ -36,7 +36,6 @@ Route::prefix('admin')->group(function () {
     Route::post('adminUser/userProfileUpdateAction', 'Admin\AdminUserController@userProfileUpdateAction')->name('adminUserProfileUpdateAction');
 
 
-
     Route::get('item', 'Admin\ItemController@index')->name('item');
     Route::get('item/create', 'Admin\ItemController@create')->name('itemCreate');
     Route::post('item/itemSave', 'Admin\ItemController@itemSave')->name('itemSave');
@@ -64,6 +63,16 @@ Route::prefix('admin')->group(function () {
     Route::get('step/edit/{id}', 'Admin\StepController@edit')->name('stepEdit');
     Route::post('step/stepUpdate', 'Admin\StepController@stepUpdate')->name('stepUpdate');
     Route::get('step/stepDelete/{id}', 'Admin\StepController@stepDelete')->name('stepDelete');
+
+    Route::get('cost', 'Admin\CostController@index')->name('cost');
+    Route::get('cost/create', 'Admin\CostController@create')->name('costCreate');
+    Route::post('cost/addDetailsToTable', 'Admin\CostController@addDetailsToTable')->name('addDetailsToTable');
+    Route::get('cost/removeDetailsFromTable/{id}', 'Admin\CostController@removeDetailsFromTable')->name('removeDetailsFromTable');
+    Route::get('cost/clearDetailsFromTable', 'Admin\CostController@clearDetailsFromTable')->name('clearDetailsFromTable');
+    Route::post('cost/costSave', 'Admin\CostController@costSave')->name('costSave');
+    Route::get('cost/edit/{id}', 'Admin\CostController@edit')->name('costEdit');
+    Route::post('cost/costUpdate', 'Admin\CostController@costUpdate')->name('costUpdate');
+    Route::get('cost/costDelete/{id}', 'Admin\CostController@costDelete')->name('costDelete');
 
 });
 

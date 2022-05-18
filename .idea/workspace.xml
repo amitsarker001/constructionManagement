@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11753012-29fa-4d9e-8fb9-edbefd7e7432" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/artisanCommands" beforeDir="false" afterPath="$PROJECT_DIR$/artisanCommands" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/aboutUs/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -14,7 +13,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -123,12 +122,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\xampp\htdocs\constructionManagement\public\assets\admin\img" />
       <recent name="G:\xampp\htdocs\constructionManagement\app\Http\Controllers\Admin" />
       <recent name="G:\xampp\htdocs\constructionManagement\resources\views\admin\step" />
       <recent name="G:\xampp\htdocs\constructionManagement\app" />
@@ -148,7 +148,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1647359294436</updated>
-      <workItem from="1647359295932" duration="4621000" />
+      <workItem from="1647359295932" duration="5552000" />
+      <workItem from="1648916733999" duration="110000" />
+      <workItem from="1648916868166" duration="1284000" />
+      <workItem from="1649299069745" duration="1408000" />
+      <workItem from="1649308254704" duration="1873000" />
+      <workItem from="1651902065906" duration="979000" />
+      <workItem from="1651904041601" duration="1670000" />
+      <workItem from="1651905925091" duration="1275000" />
+      <workItem from="1652892906694" duration="197000" />
     </task>
     <servers />
   </component>

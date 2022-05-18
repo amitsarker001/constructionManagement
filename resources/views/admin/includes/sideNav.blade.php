@@ -33,6 +33,10 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
                 Suppliers
             </a>
+            <a class="nav-link" href="{{route('cost')}}">
+                <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
+                Material Cost
+            </a>
             <a class="nav-link" href="{{route('miscellaneous')}}">
                 <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
                 Miscellaneous
