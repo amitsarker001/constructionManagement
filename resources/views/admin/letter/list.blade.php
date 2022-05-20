@@ -25,8 +25,8 @@
                         <th>SL</th>
                         <th>Entry Date</th>
                         <th>Subject</th>
-                        <th>Description</th>
-                        <th width="220px">Action</th>
+                        {{--                        <th>Description</th>--}}
+                        <th width="310px">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,14 +43,29 @@
                                 <td>{{ $count++ }}</td>
                                 <td>{{ $entryDate }}</td>
                                 <td>{{ $subject }}</td>
-                                <td>{{ $description }}</td>
+                                {{--                                <td>{{ $description }}</td>--}}
                                 <td>
-                                    <a style="margin: 1%" class="btn btn-danger float-right"
-                                       href="{{route('letterDelete', ['id' => $id])}}"><i
-                                            class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-                                    <a style="margin: 1%" class="btn btn-secondary float-right"
-                                       href="{{route('letterEdit', ['id' => $id])}}"><i class="fa fa-edit"
-                                                                                        aria-hidden="true"></i>Update</a>
+                                    <a href="{{ route('letterDetailsPrint') }}"
+                                       data-id="{{ $id }}" type="button"
+                                       class="btn btn-secondary viewDetailsButton" data-toggle="tooltip"
+                                       data-placement="bottom" title="View Details"><i class="fa fa-eye-slash"
+                                                                                       aria-hidden="true"></i> View</a>
+                                    <a href="{{route('letterPrintToPdf', ['id' => $id])}}"
+                                       data-id="{{ $id }}" type="button"
+                                       class="btn btn-primary letterPrintToPdf d-none" data-toggle="tooltip"
+                                       data-placement="bottom" title="PDF"><i class="fas fa-file-pdf"
+                                                                                       aria-hidden="true"></i> PDF</a>
+                                    <a href="{{route('letterEdit', ['id' => $id])}}"
+                                       data-id="{{ $id }}" type="button"
+                                       class="btn btn-secondary editButton" data-toggle="tooltip"
+                                       data-placement="bottom" title="Edit"><i class="fa fa-edit"
+                                                                               aria-hidden="true"></i> Update</a>
+                                    <a href="{{route('letterDelete', ['id' => $id])}}"
+                                       data-id="{{ $id }}" type="button"
+                                       class="btn btn-danger deleteButton" data-toggle="tooltip"
+                                       data-placement="bottom" title="Delete"><i class="fa fa-trash"
+                                                                                       aria-hidden="true"></i> Delete</a>
+                                    <div class="viewLetterDetailsModalSection"></div>
                                 </td>
                             </tr>
                         @endforeach
@@ -61,3 +76,47 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".deleteButton").click(function () {
+            if (!confirm("Are you sure ?")) {
+                return false;
+            }
+        });
+
+        $('.viewDetailsButton').unbind("click").bind('click', function (e) {
+            e.preventDefault();
+            {{--var baseUrl = {!! json_encode(url('/')) !!};--}}
+            // var url = baseUrl + '/getTaxInterestAmount';
+            var id = 0;
+            var thisButton = $(this);
+            id = thisButton.attr('data-id');
+            id = (id == '' || isNaN(id)) ? 0 : parseInt(id);
+            if (id > 0) {
+                $.ajax({
+                    type: "GET",
+                    url: thisButton.attr('href'),
+                    data: {'id': id},
+                    beforeSend: function () {
+                        $('.viewDetailsButton').addClass('disabled');
+                    },
+                    complete: function () {
+                        $('.viewDetailsButton').removeClass('disabled');
+                    },
+                    success: function (data) {
+                        $('.viewLetterDetailsModalSection').html('');
+                        $('.viewLetterDetailsModalSection').html(data);
+                        $('#letterDetailsModal').modal('show');
+                    },
+                    error: function () {
+
+                    },
+                });
+            } else {
+                alert('Error Occurred.');
+                return false;
+            }
+        });
+    });
+</script>

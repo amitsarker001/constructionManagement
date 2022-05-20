@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Letter;
+use App\Supplier;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,7 @@ class LetterController extends Controller
 {
     protected $userObj;
     protected $letterObj;
+    protected $supplierObj;
     //
 
     /**
@@ -23,6 +25,7 @@ class LetterController extends Controller
     {
         $this->userObj = new User();
         $this->letterObj = new Letter();
+        $this->supplierObj = new Supplier();
 //        $this->middleware('auth');
     }
 
@@ -190,5 +193,59 @@ class LetterController extends Controller
             }
         }
         return redirect()->route('adminSignin');
+    }
+
+    public function letterDetailsPrint(Request $request)
+    {
+        try {
+            $modalHtml = '';
+            if ($request->ajax()) {
+                $letterId = intval(trim($request->input('id')));
+                $letterDetails = $this->letterObj->getById($letterId);
+                $modalHtml = view('admin.letter.letterDetailsPrint')->with('letterDetails', $letterDetails);
+                echo $modalHtml = $modalHtml->render();
+            } else {
+                return redirect()->route('/admin');
+            }
+        } catch (\Exception $e) {
+
+        }
+    }
+
+    public function letterPrintToPdf(Request $request)
+    {
+        try {
+            $letterId = request()->segment(4);
+            if (!empty($letterId) && intval($letterId) > 0) {
+                $letterDetails = $this->letterObj->getById($letterId);
+                $supplierInfo = $this->supplierObj->getById($letterDetails->supplier_id);
+                $supplierName = !empty($supplierInfo->supplier_name) ? $supplierInfo->supplier_name : '';
+                $supplierName = preg_replace('/s+/', '', $supplierName);
+                $currentDateTime = date("YmdHis");
+                $fileName = $currentDateTime . '.pdf';
+                $fileName = str_replace("-", "_", $fileName);
+                $mpdf = new \Mpdf\Mpdf([
+                    'mode' => 'utf-8',
+                    'format' => 'A4',
+                    'margin_left' => 10,
+                    'margin_right' => 10,
+                    'margin_top' => 15,
+                    'margin_bottom' => 20,
+                    'margin_header' => 10,
+                    'margin_footer' => 10,
+                ]);
+                $html = view('admin.letter.pdfDesign.letterDetailsPdf')->with('letterDetails', $letterDetails);
+                $html = $html->render();
+                $mpdf->SetHeader('');
+                //$mpdf->SetFooter('{PAGENO}');
+                $mpdf->WriteHTML($html);
+                $mpdf->Output($fileName, 'I');
+            } else {
+                echo '<div style="text-align: center; color: red; font-weight: bold;">Error Occurred.<br/>' . '</div>';
+            }
+        } catch (\Exception $e) {
+            echo '<div style="text-align: center; color: red; font-weight: bold;">Error Occurred while Printing<br/>' . '</div>';
+            exit;
+        }
     }
 }

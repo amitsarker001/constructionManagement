@@ -80,6 +80,9 @@ Route::prefix('admin')->group(function () {
     Route::get('letter/edit/{id}', 'Admin\LetterController@edit')->name('letterEdit');
     Route::post('letter/letterUpdate', 'Admin\LetterController@letterUpdate')->name('letterUpdate');
     Route::get('letter/letterDelete/{id}', 'Admin\LetterController@letterDelete')->name('letterDelete');
+    Route::get('letter/letterPrintToPdf/{id}', 'Admin\LetterController@letterPrintToPdf')->name('letterPrintToPdf');
+    //Route::get('letter/letterDetailsPrint/{id}', 'Admin\LetterController@letterDetailsPrint')->name('letterDetailsPrint');
+    Route::get('letter/letterDetailsPrint', 'Admin\LetterController@letterDetailsPrint')->name('letterDetailsPrint');
 
 });
 

@@ -4,10 +4,9 @@
     <list default="true" id="11753012-29fa-4d9e-8fb9-edbefd7e7432" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/detailsTable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/detailsTable.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/formFields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/formFields.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/LetterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/LetterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/letter/formFields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/letter/formFields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/letter/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/letter/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +123,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/letter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../incometax" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -135,6 +134,9 @@
       <recent name="F:\xampp\htdocs\constructionManagement\app\Http\Controllers\Admin" />
       <recent name="G:\xampp\htdocs\constructionManagement\public\assets\admin\img" />
       <recent name="G:\xampp\htdocs\constructionManagement\app\Http\Controllers\Admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\letter\pdfDesign" />
     </key>
   </component>
   <component name="RunManager">
@@ -163,7 +165,11 @@
       <workItem from="1652988150190" duration="1760000" />
       <workItem from="1652990168148" duration="1037000" />
       <workItem from="1653026412795" duration="1680000" />
-      <workItem from="1653028130083" duration="247000" />
+      <workItem from="1653028130083" duration="684000" />
+      <workItem from="1653061362486" duration="1839000" />
+      <workItem from="1653063250125" duration="2345000" />
+      <workItem from="1653065685004" duration="1785000" />
+      <workItem from="1653067500710" duration="1007000" />
     </task>
     <servers />
   </component>
@@ -175,6 +181,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="69" y="140" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1647360523870" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1653066921677">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1653066921677" />
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1653065861512">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1653065861512" />
     <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1653027796885">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

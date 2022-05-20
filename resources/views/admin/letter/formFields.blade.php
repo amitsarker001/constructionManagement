@@ -6,13 +6,13 @@
 ?>
 {{csrf_field()}}
 <div class="form-row">
-    <div class="col-md-6">
-        <div class="form-group"><label class="small mb-1" for="supplier_id">Supplier</label><input
-                class="form-control" id="supplier_id" name="supplier_id" type="text" placeholder="Name"
-                value="{{!empty($letterInfo->supplier_id) ?$letterInfo->supplier_id : ''}}" required>
-        </div>
-    </div>
-    <div class="col-md-6">
+{{--    <div class="col-md-12">--}}
+{{--        <div class="form-group"><label class="small mb-1" for="supplier_id">Supplier</label><input--}}
+{{--                class="form-control" id="supplier_id" name="supplier_id" type="text" placeholder="Name"--}}
+{{--                value="{{!empty($letterInfo->supplier_id) ?$letterInfo->supplier_id : ''}}" required>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+    <div class="col-md-12">
         <div class="form-group"><label class="small mb-1" for="entry_date">Entry Date</label><input
                 class="form-control" id="entry_date" name="entry_date" type="date" placeholder="Entry Date"
                 value="{{!empty($letterInfo->entry_date) ?getFloat($letterInfo->entry_date) : ''}}">
