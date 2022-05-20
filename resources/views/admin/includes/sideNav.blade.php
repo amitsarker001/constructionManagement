@@ -41,6 +41,10 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
                 Miscellaneous
             </a>
+            <a class="nav-link" href="{{route('letter')}}">
+                <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
+                Letters
+            </a>
             {{--            @endif--}}
 
             {{--            <div class="sb-sidenav-menu-heading">Interface</div>--}}

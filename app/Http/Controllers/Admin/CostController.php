@@ -62,6 +62,7 @@ class CostController extends Controller
 
     public function create()
     {
+        $this->clearDetailsFromTable();
         $userObj = new User();
         $logginUserId = $userObj->getLoggedinUserId();
         if ($logginUserId > 0) {
@@ -106,13 +107,11 @@ class CostController extends Controller
                     $itemInfo = $this->itemObj->getById($item_id);
                     $item_details = [
                         'array_id' => time(),
-                        //'step_id' => $step_id,
-                        //'step_name' => (!empty($stepInfo)) ? $stepInfo->step_name : '',
-                        //'entry_date' => $entry_date,
                         'item_id' => $item_id,
                         'item_name' => (!empty($itemInfo)) ? $itemInfo->item_name : '',
                         'quantity' => $quantity,
                         'rate' => $rate,
+                        'amount' => $amount,
                         'standard_rate' => $standard_rate,
                         'standard_amount' => $standard_amount,
                         'increase_rate' => $increase_rate,
@@ -174,23 +173,21 @@ class CostController extends Controller
             //$itemObj->checkValidation($request);
             $this->costObj->step_id = intval(trim($request->input('step_id')));
             $this->costObj->entry_date = trim($request->input('entry_date'));
-            $isExists = false;
-            if (!boolval($isExists)) { // if does not exists
+            $items = session()->get('arraydetailsSession');
+            if ((!empty($items))) {
                 $result = $this->costObj->save();
                 if (boolval($result)) {
-                    $items = session()->get('arraydetailsSession');
-                    if ((!empty($items))) {
-                        foreach ($items as $item) {
-                            $this->costDetailsObj->cost_id = $this->costObj->id;
-                            $this->costDetailsObj->item_id = $item['item_id'];
-                            $this->costDetailsObj->quantity = $item['quantity'];
-                            $this->costDetailsObj->rate = $item['rate'];
-                            $this->costDetailsObj->standard_rate = $item['standard_rate'];
-                            $this->costDetailsObj->standard_amount = $item['standard_amount'];
-                            $this->costDetailsObj->increase_rate = $item['increase_rate'];
-                            $this->costDetailsObj->increase_amount = $item['increase_amount'];
-                            $this->costDetailsObj->save();
-                        }
+                    foreach ($items as $item) {
+                        $this->costDetailsObj->cost_id = $this->costObj->id;
+                        $this->costDetailsObj->item_id = $item['item_id'];
+                        $this->costDetailsObj->quantity = $item['quantity'];
+                        $this->costDetailsObj->rate = $item['rate'];
+                        $this->costDetailsObj->amount = $item['amount'];
+                        $this->costDetailsObj->standard_rate = $item['standard_rate'];
+                        $this->costDetailsObj->standard_amount = $item['standard_amount'];
+                        $this->costDetailsObj->increase_rate = $item['increase_rate'];
+                        $this->costDetailsObj->increase_amount = $item['increase_amount'];
+                        $this->costDetailsObj->save();
                     }
                     $this->clearDetailsFromTable();
                     $message = 'Information has been saved successfully.';
@@ -201,7 +198,7 @@ class CostController extends Controller
                         ->with('error', $message);
                 }
             } else {
-                $message = 'Error Occurred.';
+                $message = 'No data in table.';
                 return redirect()->route('costCreate')
                     ->with('error', $message);
             }

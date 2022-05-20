@@ -74,6 +74,13 @@ Route::prefix('admin')->group(function () {
     Route::post('cost/costUpdate', 'Admin\CostController@costUpdate')->name('costUpdate');
     Route::get('cost/costDelete/{id}', 'Admin\CostController@costDelete')->name('costDelete');
 
+    Route::get('letter', 'Admin\LetterController@index')->name('letter');
+    Route::get('letter/create', 'Admin\LetterController@create')->name('letterCreate');
+    Route::post('letter/letterSave', 'Admin\LetterController@letterSave')->name('letterSave');
+    Route::get('letter/edit/{id}', 'Admin\LetterController@edit')->name('letterEdit');
+    Route::post('letter/letterUpdate', 'Admin\LetterController@letterUpdate')->name('letterUpdate');
+    Route::get('letter/letterDelete/{id}', 'Admin\LetterController@letterDelete')->name('letterDelete');
+
 });
 
 

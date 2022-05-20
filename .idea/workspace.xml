@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="11753012-29fa-4d9e-8fb9-edbefd7e7432" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artisanCommands" beforeDir="false" afterPath="$PROJECT_DIR$/artisanCommands" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/detailsTable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/detailsTable.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/formFields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/formFields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -122,16 +124,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/letter" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\letter" />
+      <recent name="F:\xampp\htdocs\constructionManagement\app" />
+      <recent name="F:\xampp\htdocs\constructionManagement\app\Http\Controllers\Admin" />
       <recent name="G:\xampp\htdocs\constructionManagement\public\assets\admin\img" />
       <recent name="G:\xampp\htdocs\constructionManagement\app\Http\Controllers\Admin" />
-      <recent name="G:\xampp\htdocs\constructionManagement\resources\views\admin\step" />
-      <recent name="G:\xampp\htdocs\constructionManagement\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -156,7 +159,11 @@
       <workItem from="1651902065906" duration="979000" />
       <workItem from="1651904041601" duration="1670000" />
       <workItem from="1651905925091" duration="1275000" />
-      <workItem from="1652892906694" duration="197000" />
+      <workItem from="1652892906694" duration="1462000" />
+      <workItem from="1652988150190" duration="1760000" />
+      <workItem from="1652990168148" duration="1037000" />
+      <workItem from="1653026412795" duration="1680000" />
+      <workItem from="1653028130083" duration="247000" />
     </task>
     <servers />
   </component>
@@ -168,5 +175,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="69" y="140" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1647360523870" />
+    <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1653027796885">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1653027796885" />
   </component>
 </project>

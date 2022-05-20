@@ -23,8 +23,15 @@
                     <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Name</th>
-                        <th width="220px">Action</th>
+                        <th>Particulars</th>
+                        <th>Quantity</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                        <th>Standard Rate</th>
+                        <th>Standard Amount</th>
+                        <th>Increase Rate (%)</th>
+                        <th>Increase Amount</th>
+                        <th width="120px">Action</th>
                     </tr>
                     </thead>
                     <tbody>
