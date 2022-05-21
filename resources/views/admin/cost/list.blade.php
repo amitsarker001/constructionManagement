@@ -24,7 +24,7 @@
                     <tr>
                         <th>SL</th>
                         <th>Step Name</th>
-                        <th width="120px">Action</th>
+                        <th width="200px">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,10 +49,10 @@
                                        class="btn btn-secondary viewDetailsButton" data-toggle="tooltip"
                                        data-placement="bottom" title="View Details"><i class="fa fa-eye-slash"
                                                                                        aria-hidden="true"></i> View</a>
-                                    <a style="margin: 1%" class="btn btn-danger float-right d-none"
+                                    <a class="btn btn-danger float-right deleteButton"
                                        href="{{route('costDelete', ['id' => $id])}}"><i
                                             class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-                                    <a style="margin: 1%" class="btn btn-secondary float-right d-none"
+                                    <a class="btn btn-secondary float-right d-none"
                                        href="{{route('costEdit', ['id' => $id])}}"><i class="fa fa-edit"
                                                                                       aria-hidden="true"></i>Update</a>
                                     <div class="viewDetailsDetailsModalSection"></div>
