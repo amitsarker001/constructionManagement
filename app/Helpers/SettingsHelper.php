@@ -1,5 +1,15 @@
 <?php
 
+function getStringToDateFromatDmy($date) {
+    getTimeZone();
+    return $result = date("d-m-Y", strtotime($date));
+}
+
+function getStringToDateFromat($date) {
+    getTimeZone();
+    return $result = date("Y-m-d", strtotime($date));
+}
+
 if (!function_exists('getUnitArray')) {
 
     /**

@@ -25,10 +25,13 @@
         </thead>
         <tbody>
         @php
-            {{$costList = session()->get('arraydetailsSession');}}
+            {{ $costList = session()->get('arraydetailsSession'); }}
         @endphp
+        <?php
+        $count = 1;
+        $increaseAmountSum = 0;
+        ?>
         @if(!empty($costList))
-            <?php $count = 1; ?>
             @foreach($costList as $cost)
                 <?php
                 $array_id = !empty($cost['array_id']) ? intval($cost['array_id']) : 0;
@@ -41,28 +44,68 @@
                 $standardAmount = !empty($cost['standard_amount']) ? ($cost['standard_amount']) : 0;
                 $increaseRate = !empty($cost['increase_rate']) ? ($cost['increase_rate']) : 0;
                 $increaseAmount = !empty($cost['increase_amount']) ? ($cost['increase_amount']) : 0;
+                $increaseAmountSum += $increaseAmount;
                 ?>
                 <tr>
                     <td>{{ $count++ }}</td>
-                    <td>{{ $item }}</td>
-                    <td>{{ getFloat($quantity) }}</td>
-                    <td>{{ getFloat($rate) }}</td>
-                    <td>{{ getFloat($amount) }}</td>
-                    <td>{{ getFloat($standardRate) }}</td>
-                    <td>{{ getFloat($standardAmount) }}</td>
-                    <td>{{ getFloat($increaseRate) }}</td>
-                    <td>{{ getFloat($increaseAmount) }}</td>
+                    <td class="text-right">{{ $item }}</td>
+                    <td class="text-right">{{ getFloat($quantity) }}</td>
+                    <td class="text-right">{{ getFloat($rate) }}</td>
+                    <td class="text-right">{{ getFloat($amount) }}</td>
+                    <td class="text-right">{{ getFloat($standardRate) }}</td>
+                    <td class="text-right">{{ getFloat($standardAmount) }}</td>
+                    <td class="text-right">{{ getFloat($increaseRate) }}</td>
+                    <td class="text-right">{{ getFloat($increaseAmount) }}</td>
                     <td>
-                        <a style="margin: 1%" class="btn btn-danger float-right"
+                        <a data-toggle="tooltip" data-placement="bottom" title="View Details"
+                           type="button" style="margin: 1%" class="btn btn-danger float-right removeDetailsButton"
+                           data-id="{{ $array_id }}"
                            href="{{route('removeDetailsFromTable', ['id' => $array_id])}}"><i
                                 class="fa fa-minus-circle" aria-hidden="true"></i></a>
-                    <!-- <a style="margin: 1%" class="btn btn-secondary float-right"
-                           href="{{route('costEdit', ['id' => $array_id])}}"><i class="fa fa-edit"
-                                                                              aria-hidden="true"></i>Update</a> -->
                     </td>
                 </tr>
             @endforeach
         @endif
         </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="8" class="font-weight-bold text-right">Total</td>
+            <td class="font-weight-bold text-right">{{  getFloat($increaseAmountSum)  }}</td>
+        </tr>
+        </tfoot>
     </table>
 </div>
+<script>
+
+    $('.removeDetailsButton').unbind("click").bind('click', function (e) {
+        e.preventDefault();
+        {{--var baseUrl = {!! json_encode(url('/')) !!};--}}
+        // var url = baseUrl + '/getTaxInterestAmount';
+        var id = 0;
+        var thisButton = $(this);
+        id = thisButton.attr('data-id');
+        id = (id == '' || isNaN(id)) ? 0 : parseInt(id);
+        if (id > 0) {
+            $.ajax({
+                type: "GET",
+                url: thisButton.attr('href'),
+                data: {'id': id},
+                beforeSend: function () {
+                    $('.viewDetailsButton').addClass('disabled');
+                },
+                complete: function () {
+                    $('.viewDetailsButton').removeClass('disabled');
+                },
+                success: function (data) {
+                    $('#detailsTableSection').html(data);
+                },
+                error: function () {
+
+                },
+            });
+        } else {
+            alert('Error Occurred.');
+            return false;
+        }
+    });
+</script>

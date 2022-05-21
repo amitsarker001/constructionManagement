@@ -4,7 +4,15 @@
  * Created Date: 06-10-2020
  */
 ?>
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 {{csrf_field()}}
 <div class="form-row">
     <div class="col-md-4">
@@ -82,17 +90,93 @@
     </div>
     <div class="col-md-4">
         <div class="form-group">
-            <button style="margin-top: 7%;" id="" class="btn btn-secondary"><i class="fa fa-plus"
+            <button data-action="{{route('addDetailsToTable')}}" type="submit"
+                    style="margin-top: 7%;" id="" class="btn btn-secondary addDetailsButton"><i class="fa fa-plus"
                                                                                aria-hidden="true"></i> Add
             </button>
+            <a style="margin-top: 7%;" class="btn btn-danger float-right" href="{{route('clearDetailsFromTable')}}"><i
+                    class="fa fa-trash" aria-hidden="true"></i> Clear Table</a>
+
         </div>
     </div>
 </div>
-<div class="form-group mt-4 mb-0">
-    <a style="margin: 1%" class="btn btn-danger float-right" href="{{route('clearDetailsFromTable')}}"><i
-            class="fa fa-trash" aria-hidden="true"></i> Clear Table</a>
+
+<div id="detailsTableSection">
+    @include('admin.cost.detailsTable')
 </div>
+
 <script type="text/javascript">
+
+    addInTable();
+    function addInTable() {
+        var thisForm = $('#addCostActionForm');
+        thisForm.validate({
+            ignore: [],
+            rules: {
+                item_id: "required",
+                quantity: {
+                    required: true,
+                    number: true,
+                },
+                amount: {
+                    required: true,
+                    number: true,
+                    min: 0.01,
+                },
+            },
+            messages: {
+                item_id: "Please Select Item",
+                quantity: {
+                    required: "Please Enter Quantity",
+                    number: "Please Enter a valid quantity",
+                },
+                amount: {
+                    required: "Please Enter Amount",
+                    number: "Please Enter a valid Amount",
+                    min: "Please Enter a valid Amount greater than 0.",
+                },
+            },
+            errorElement: "em",
+            errorPlacement: function (error, element) {
+                // Add the `help-block` class to the error element
+                error.addClass("help-block");
+                if (element.prop("type") === "checkbox") {
+                    error.insertAfter(element.parent("label"));
+                } else {
+                    error.insertAfter(element);
+                }
+                if (element.attr("name") === "item_id") {
+                    error.insertAfter(".bootstrap-select.item_id");
+                } else {
+                    error.insertAfter(element);
+                }
+                if (element.attr("name") === "item_id") {
+                    error.insertAfter(".select2-selection #select2-item_id-container");
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents(".error-message").addClass("has-error").removeClass("has-success");
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents(".error-message").addClass("has-success").removeClass("has-error");
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    type: "POST",
+                    url: thisForm.attr('action'),
+                    data: thisForm.serialize(),
+                    success: function (data) {
+                        $('#detailsTableSection').html(data);
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        });
+    }
 
     $('#quantity, #amount, #standard_rate, #standard_rate').keyup(function (e) {
         e.preventDefault();
@@ -142,4 +226,4 @@
         $('#increase_amount').val(increaseAmount.toFixed(2));
     }
 </script>
-@include('admin.cost.detailsTable')
+

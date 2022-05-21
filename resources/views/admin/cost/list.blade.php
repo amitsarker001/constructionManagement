@@ -23,37 +23,39 @@
                     <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Particulars</th>
-                        <th>Quantity</th>
-                        <th>Rate</th>
-                        <th>Amount</th>
-                        <th>Standard Rate</th>
-                        <th>Standard Amount</th>
-                        <th>Increase Rate (%)</th>
-                        <th>Increase Amount</th>
+                        <th>Step Name</th>
                         <th width="120px">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @if(!empty($costList))
-                        <?php $count = 1; ?>
+                        <?php
+                        $count = 1;
+                        $stepObj = new \App\Step();
+                        ?>
                         @foreach($costList as $cost)
                             <?php
                             $id = !empty($cost->id) ? intval($cost->id) : 0;
+                            $stepId = !empty($cost->step_id) ? intval($cost->step_id) : 0;
+                            $stepInfo = $stepObj->getById($stepId);
+                            $stepName = !empty($stepInfo->step_name) ? $stepInfo->step_name : '';
                             ?>
                             <tr>
-                                <td>{{$count++}}</td>
-                                <td>{{$id}}</td>
+                                <td>{{ $count++ }}</td>
+                                <td>{{ $stepName }}</td>
                                 <td>
-                                    <span style="display:inline-block; width:70px;"
-                                          class="badge badge-{{''}}">{{''}}</span>
-                                </td>
-                                <td>
-                                    <a style="margin: 1%" class="btn btn-danger float-right" href="{{route('costDelete', ['id' => $id])}}"><i
+                                    <a href="{{ route('stepWiseCostDetails') }}"
+                                       data-id="{{ $id }}" type="button"
+                                       class="btn btn-secondary viewDetailsButton" data-toggle="tooltip"
+                                       data-placement="bottom" title="View Details"><i class="fa fa-eye-slash"
+                                                                                       aria-hidden="true"></i> View</a>
+                                    <a style="margin: 1%" class="btn btn-danger float-right d-none"
+                                       href="{{route('costDelete', ['id' => $id])}}"><i
                                             class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-                                    <a style="margin: 1%" class="btn btn-secondary float-right"
+                                    <a style="margin: 1%" class="btn btn-secondary float-right d-none"
                                        href="{{route('costEdit', ['id' => $id])}}"><i class="fa fa-edit"
-                                                                                          aria-hidden="true"></i>Update</a>
+                                                                                      aria-hidden="true"></i>Update</a>
+                                    <div class="viewDetailsDetailsModalSection"></div>
                                 </td>
                             </tr>
                         @endforeach
@@ -64,3 +66,45 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".deleteButton").click(function () {
+            if (!confirm("Are you sure ?")) {
+                return false;
+            }
+        });
+
+        $('.viewDetailsButton').unbind("click").bind('click', function (e) {
+            e.preventDefault();
+            var id = 0;
+            var thisButton = $(this);
+            id = thisButton.attr('data-id');
+            id = (id == '' || isNaN(id)) ? 0 : parseInt(id);
+            if (id > 0) {
+                $.ajax({
+                    type: "GET",
+                    url: thisButton.attr('href'),
+                    data: {'id': id},
+                    beforeSend: function () {
+                        $('.viewDetailsButton').addClass('disabled');
+                    },
+                    complete: function () {
+                        $('.viewDetailsButton').removeClass('disabled');
+                    },
+                    success: function (data) {
+                        $('.viewDetailsDetailsModalSection').html('');
+                        $('.viewDetailsDetailsModalSection').html(data);
+                        $('#costDetailsModal').modal('show');
+                    },
+                    error: function () {
+
+                    },
+                });
+            } else {
+                alert('Error Occurred.');
+                return false;
+            }
+        });
+    });
+</script>

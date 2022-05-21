@@ -73,6 +73,7 @@ Route::prefix('admin')->group(function () {
     Route::get('cost/edit/{id}', 'Admin\CostController@edit')->name('costEdit');
     Route::post('cost/costUpdate', 'Admin\CostController@costUpdate')->name('costUpdate');
     Route::get('cost/costDelete/{id}', 'Admin\CostController@costDelete')->name('costDelete');
+    Route::get('cost/stepWiseCostDetails', 'Admin\CostController@stepWiseCostDetails')->name('stepWiseCostDetails');
 
     Route::get('letter', 'Admin\LetterController@index')->name('letter');
     Route::get('letter/create', 'Admin\LetterController@create')->name('letterCreate');

@@ -28,7 +28,7 @@
                 @endif
             </div>
             <div class="modal-footer">
-                <button id="printButton" type="button" class="btn btn-info" onclick='printDiv();'><i class="fa fa-print" aria-hidden="true"></i> Print</button>
+                <button id="printButton" type="button" class="btn btn-info"><i class="fa fa-print" aria-hidden="true"></i> Print</button>
                 <button id="closeButton" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Close</button>
             </div>
         </div>
@@ -36,14 +36,27 @@
 </div>
 
 <script type="text/javascript">
-    function printDiv() {
-        var divToPrint = document.getElementById('DivIdToPrint');
-        var newWin = window.open('', 'Print-Window');
-        newWin.document.open();
-        newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
-        newWin.document.close();
-        setTimeout(function () {
-            newWin.close();
-        }, 10);
+
+    $('#printButton').click(function (e){
+        e.preventDefault();
+        printDivById('DivIdToPrint')
+    });
+
+    function printDiv(className) {
+        var divContents = $('.' + className).html();
+        var printWindow = window.open();
+        printWindow.document.write(divContents);
+        printWindow.document.close();
+        printWindow.print();
+        printWindow.close();
+    }
+
+    function printDivById(divId) {
+        var divContents = $('#' + divId).html();
+        var printWindow = window.open();
+        printWindow.document.write(divContents);
+        printWindow.document.close();
+        printWindow.print();
+        printWindow.close();
     }
 </script>

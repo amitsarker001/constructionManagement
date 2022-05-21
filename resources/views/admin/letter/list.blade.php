@@ -41,7 +41,7 @@
                             ?>
                             <tr>
                                 <td>{{ $count++ }}</td>
-                                <td>{{ $entryDate }}</td>
+                                <td>{{ getStringToDateFromatDmy($entryDate) }}</td>
                                 <td>{{ $subject }}</td>
                                 {{--                                <td>{{ $description }}</td>--}}
                                 <td>
@@ -87,8 +87,6 @@
 
         $('.viewDetailsButton').unbind("click").bind('click', function (e) {
             e.preventDefault();
-            {{--var baseUrl = {!! json_encode(url('/')) !!};--}}
-            // var url = baseUrl + '/getTaxInterestAmount';
             var id = 0;
             var thisButton = $(this);
             id = thisButton.attr('data-id');
