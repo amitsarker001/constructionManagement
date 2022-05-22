@@ -20,6 +20,8 @@ class CreateItemsTable extends Migration
             $table->string('barcode')->nullable();
             $table->string('unit')->nullable();
             $table->double('unit_price')->default(0);
+            $table->double('standard_rate')->default(0);
+            $table->double('standard_amount')->default(0);
             $table->text('item_description')->nullable();
             $table->double('reorder_level')->default(0);
             $table->integer('sort_order')->default(1)->comment('Ascending order according to sort order');

@@ -42,6 +42,20 @@
 </div>
 <div class="form-row">
     <div class="col-md-6">
+        <div class="form-group"><label class="small mb-1" for="standard_rate">Standard Rate</label><input
+                class="form-control" id="standard_rate" name="standard_rate" type="number" placeholder="Standard Rate"
+                value="{{!empty($itemInfo->standard_rate) ?$itemInfo->standard_rate : ''}}" required>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group"><label class="small mb-1" for="standard_amount">Standard Amount</label><input
+                class="form-control" id="standard_amount" name="standard_amount" type="number" placeholder="Standard Amount"
+                value="{{!empty($itemInfo->standard_amount) ?$itemInfo->standard_amount : ''}}" required>
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col-md-6">
         <div class="form-group"><label class="small mb-1" for="item_description">Description</label>
             <textarea class="form-control" id="item_description" name="item_description"
                       rows="2">{{!empty($itemInfo->item_description) ?$itemInfo->item_description : ''}}</textarea>

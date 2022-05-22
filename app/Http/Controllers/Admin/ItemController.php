@@ -78,6 +78,8 @@ class ItemController extends Controller
             $itemObj->item_code = trim($request->input('item_code'));
             $itemObj->unit = trim($request->input('unit'));
             $itemObj->unit_price = intval(trim($request->input('unit_price')));
+            $itemObj->standard_rate = doubleval(trim($request->input('standard_rate')));
+            $itemObj->standard_amount = doubleval(trim($request->input('standard_amount')));
             $itemObj->item_description = trim($request->input('item_description'));
             $itemObj->is_active = boolval(trim($request->input('is_active')));
             $isExists = $itemObj->isColumnValueExist('item_name', $itemObj->item_name);
@@ -141,6 +143,8 @@ class ItemController extends Controller
             $itemCode = trim($request->input('item_code'));
             $unit = trim($request->input('unit'));
             $unitPrice = intval(trim($request->input('unit_price')));
+            $standardRate = doubleval(trim($request->input('standard_rate')));
+            $standardAmount = doubleval(trim($request->input('standard_amount')));
             $itemDescription = trim($request->input('item_description'));
             $isActive = boolval(trim($request->input('is_active')));
             $isExists = $itemObj->isColumnValueExist('item_name', $itemName, $id);
@@ -151,6 +155,8 @@ class ItemController extends Controller
                     'item_code' => $itemCode,
                     'unit' => $unit,
                     'unit_price' => $unitPrice,
+                    'standard_rate' => $standardRate,
+                    'standard_amount' => $standardAmount,
                     'item_description' => $itemDescription,
                     'is_active' => $isActive,
                 );

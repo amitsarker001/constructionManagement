@@ -20,6 +20,9 @@
             <th>Standard Amount</th>
             <th>Increase Rate (%)</th>
             <th>Increase Amount</th>
+            <th>Supplier</th>
+            <th>Status</th>
+            <th>Notes</th>
             <th width="50px">Action</th>
         </tr>
         </thead>
@@ -45,6 +48,9 @@
                 $standardAmount = !empty($cost['standard_amount']) ? ($cost['standard_amount']) : 0;
                 $increaseRate = !empty($cost['increase_rate']) ? ($cost['increase_rate']) : 0;
                 $increaseAmount = !empty($cost['increase_amount']) ? ($cost['increase_amount']) : 0;
+                $supplierName = !empty($cost['supplier_name']) ? ($cost['supplier_name']) : '';
+                $status = !empty($cost['status']) ? ($cost['status']) : '';
+                $notes = !empty($cost['notes']) ? ($cost['notes']) : '';
                 $amountSum += $amount;
                 $increaseAmountSum += $increaseAmount;
                 ?>
@@ -58,6 +64,9 @@
                     <td class="text-right">{{ getFloat($standardAmount) }}</td>
                     <td class="text-right">{{ getFloat($increaseRate) }}</td>
                     <td class="text-right">{{ getFloat($increaseAmount) }}</td>
+                    <td class="text-right">{{ ($supplierName) }}</td>
+                    <td class="text-right">{{ ($status) }}</td>
+                    <td class="text-right">{{ ($notes) }}</td>
                     <td>
                         <a data-toggle="tooltip" data-placement="bottom" title="View Details"
                            type="button" style="margin: 1%" class="btn btn-danger float-right removeDetailsButton"
@@ -77,6 +86,10 @@
             <td class="font-weight-bold text-right"></td>
             <td class="font-weight-bold text-right"></td>
             <td class="font-weight-bold text-right">{{  getFloat($increaseAmountSum)  }}</td>
+            <td class="font-weight-bold text-right"></td>
+            <td class="font-weight-bold text-right"></td>
+            <td class="font-weight-bold text-right"></td>
+            <td class="font-weight-bold text-right"></td>
         </tr>
         </tfoot>
     </table>

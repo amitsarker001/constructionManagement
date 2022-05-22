@@ -51,7 +51,7 @@
                             $totalCost = !empty($miscellaneous->total_cost) ? getFloat($miscellaneous->total_cost) : getFloat(0);
 
                             $remarks = !empty($miscellaneous->remarks) ? $miscellaneous->remarks : '';
-                            $entryDate = !empty($miscellaneous->entry_date) ? getStringToDateFromatDmy($miscellaneous->entry_date) : '';
+                            $entryDate = !empty($miscellaneous->entry_date) ? getStringToDateFormatDmy($miscellaneous->entry_date) : '';
                             $userId = !empty($miscellaneous->user_id) ? intval($miscellaneous->user_id) : 0;
                             $userInfo = $userObj->getById($userId);
                             $userName = !empty($userInfo->user_name) ? $userInfo->user_name : '';

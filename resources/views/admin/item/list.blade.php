@@ -25,6 +25,8 @@
                         <th>SL</th>
                         <th>Name</th>
                         <th>unit</th>
+                        <th class="text-right">Standard Rate</th>
+                        <th class="text-right">Standard Amount</th>
                         <th>Description</th>
                         <th>Status</th>
                         <th width="220px">Action</th>
@@ -38,6 +40,8 @@
                             $id = !empty($item->id) ? intval($item->id) : 0;
                             $itemName = !empty($item->item_name) ? $item->item_name : '';
                             $unit = !empty($item->unit) ? $item->unit : '';
+                            $standardRate = !empty($item->standard_rate) ? $item->standard_rate : 0;
+                            $standardAmount = !empty($item->standard_amount) ? $item->standard_amount : 0;
                             $description = !empty($item->item_description) ? $item->item_description : '';
                             $isActive = !empty($item->is_active) ? $item->is_active : 0;
                             $isActiveText = ($isActive == 1) ? "Active" : "Inactive";
@@ -47,17 +51,20 @@
                                 <td>{{$count++}}</td>
                                 <td>{{$itemName}}</td>
                                 <td>{{$unit}}</td>
+                                <td class="text-right">{{getFloat($standardRate)}}</td>
+                                <td class="text-right">{{getFloat($standardAmount)}}</td>
                                 <td>{{$description}}</td>
                                 <td>
                                     <span style="display:inline-block; width:70px;"
                                           class="badge badge-{{$isActiveTextClass}}">{{$isActiveText}}</span>
                                 </td>
                                 <td>
-                                    <a style="margin: 1%" class="btn btn-danger float-right" href="{{route('itemDelete', ['id' => $id])}}"><i
+                                    <a style="margin: 1%" class="btn btn-danger float-right"
+                                       href="{{route('itemDelete', ['id' => $id])}}"><i
                                             class="fa fa-trash" aria-hidden="true"></i>Delete</a>
                                     <a style="margin: 1%" class="btn btn-secondary float-right"
                                        href="{{route('itemEdit', ['id' => $id])}}"><i class="fa fa-edit"
-                                                                                          aria-hidden="true"></i>Update</a>
+                                                                                      aria-hidden="true"></i>Update</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -17,6 +17,7 @@ class CreateCostDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('cost_id')->default(0);
             $table->integer('item_id')->default(0);
+            $table->integer('supplier_id')->default(0);
             $table->double('quantity')->default(0);
             $table->double('rate')->default(0);
             $table->double('amount')->default(0);
@@ -25,6 +26,8 @@ class CreateCostDetailsTable extends Migration
             $table->double('increase_rate')->default(0);
             $table->double('increase_amount')->default(0);
             $table->text('description')->nullable();
+            $table->text('notes')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -89,10 +89,41 @@
         </div>
     </div>
     <div class="col-md-4">
+        <div class="form-group"><label class="small mb-1" for="supplier_id">Supplier Name</label>
+            <select class="form-control" id="supplier_id" name="supplier_id" required>
+                <option value="">Please select</option>
+                <?php $supplier_id = !empty($costInfo->supplier_id) ? $costInfo->supplier_id : 0; ?>
+                @if(!empty($supplierList))
+                    @foreach($supplierList as $supplier)
+                        <option
+                            value="{{$supplier->id}}" {{($supplier_id == $supplier->id) ? 'selected' : ''}}>{{$supplier->supplier_name}}</option>
+                    @endforeach
+                @endif
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col-md-4">
+        <div class="form-group"><label class="small mb-1" for="status">Status</label>
+            <select class="form-control" id="status" name="status" required>
+                <option value="Done">Done</option>
+                <option value="Due">Due</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group"><label class="small mb-1" for="notes">Notes</label>
+            <textarea class="form-control" id="notes" name="notes"
+                      rows="2">{{!empty($costInfo->notes) ?$costInfo->notes : ''}}</textarea>
+        </div>
+    </div>
+    <div class="col-md-4">
         <div class="form-group">
             <button data-action="{{route('addDetailsToTable')}}" type="submit"
                     style="margin-top: 7%;" id="" class="btn btn-secondary addDetailsButton"><i class="fa fa-plus"
-                                                                               aria-hidden="true"></i> Add
+                                                                                                aria-hidden="true"></i>
+                Add
             </button>
             <a style="margin-top: 7%;" class="btn btn-danger float-right" href="{{route('clearDetailsFromTable')}}"><i
                     class="fa fa-trash" aria-hidden="true"></i> Clear Table</a>
@@ -108,6 +139,7 @@
 <script type="text/javascript">
 
     addInTable();
+
     function addInTable() {
         var thisForm = $('#addCostActionForm');
         thisForm.validate({
@@ -169,6 +201,7 @@
                     data: thisForm.serialize(),
                     success: function (data) {
                         $('#detailsTableSection').html(data);
+                        thisForm.trigger("reset");
                     },
                     error: function () {
 

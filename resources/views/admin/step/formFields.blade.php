@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="form-group"><label class="small mb-1" for="end_date">End Datek</label><input
+        <div class="form-group"><label class="small mb-1" for="end_date">End Date</label><input
                 class="form-control" id="end_date" name="end_date" type="date" placeholder="End Date"
                 value="{{!empty($stepInfo->end_date) ?getFloat($stepInfo->end_date) : ''}}">
         </div>

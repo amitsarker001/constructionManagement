@@ -41,7 +41,7 @@
                             ?>
                             <tr>
                                 <td>{{ $count++ }}</td>
-                                <td>{{ getStringToDateFromatDmy($entryDate) }}</td>
+                                <td>{{ getStringToDateFormatDmy($entryDate) }}</td>
                                 <td>{{ $subject }}</td>
                                 {{--                                <td>{{ $description }}</td>--}}
                                 <td>

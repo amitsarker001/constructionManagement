@@ -25,7 +25,7 @@
                             <label for="entry_date" class="col-sm-2 col-form-label font-weight-bold">Date:</label>
                             <div class="col-sm-10">
                                 <label for="entry_date"
-                                       class="col-sm-10 col-form-label">{{ !empty($data['costInfo']->entry_date) ? getStringToDateFromatDmy($data['costInfo']->entry_date) : '' }}</label>
+                                       class="col-sm-10 col-form-label">{{ !empty($data['costInfo']->entry_date) ? getStringToDateFormatDmy($data['costInfo']->entry_date) : '' }}</label>
                             </div>
                         </div>
 
@@ -143,7 +143,7 @@
             <label style="float: left; width: 10%" for="entry_date" class="col-sm-2 col-form-label">Date:</label>
             <div class="col-sm-10" style="float: left; width: 90%">
                 <label for="entry_date"
-                       class="col-sm-10 col-form-label">{{ !empty($data['costInfo']->entry_date) ? getStringToDateFromatDmy($data['costInfo']->entry_date) : '' }}</label>
+                       class="col-sm-10 col-form-label">{{ !empty($data['costInfo']->entry_date) ? getStringToDateFormatDmy($data['costInfo']->entry_date) : '' }}</label>
             </div>
         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Item;
+use App\Supplier;
 use App\User;
 use App\Cost;
 use App\Step;
@@ -17,6 +18,7 @@ class CostController extends Controller
     protected $userObj;
     protected $stepObj;
     protected $itemObj;
+    protected $supplierObj;
     protected $costObj;
     protected $costDetailsObj;
     //
@@ -31,6 +33,7 @@ class CostController extends Controller
         $this->userObj = new User();
         $this->stepObj = new Step();
         $this->itemObj = new Item();
+        $this->supplierObj = new Supplier();
         $this->costObj = new Cost();
         $this->costDetailsObj = new Cost_details();
 //        $this->middleware('auth');
@@ -78,6 +81,7 @@ class CostController extends Controller
                         'buttonText' => 'Save',
                         'stepList' => $this->stepObj->getAll(),
                         'itemList' => $this->itemObj->getAll(),
+                        'supplierList' => $this->supplierObj->getAll(),
                     );
                     return view('admin.cost.add')->with($data);
                 } else {
@@ -97,6 +101,7 @@ class CostController extends Controller
             $tableHtml = '';
             if ($request->ajax()) {
                 $item_id = intval(trim($request->input('item_id')));
+                $supplier_id = intval(trim($request->input('supplier_id')));
                 $quantity = doubleval(trim($request->input('quantity')));
                 $rate = doubleval(trim($request->input('rate')));
                 $amount = doubleval(trim($request->input('amount')));
@@ -104,6 +109,8 @@ class CostController extends Controller
                 $standard_amount = doubleval(trim($request->input('standard_amount')));
                 $increase_rate = doubleval(trim($request->input('increase_rate')));
                 $increase_amount = doubleval(trim($request->input('increase_amount')));
+                $notes = trim($request->input('notes'));
+                $status = trim($request->input('status'));
                 if ($item_id >= 0) {
                     if ($quantity >= 0) {
                         if ($amount >= 0) {
@@ -111,10 +118,13 @@ class CostController extends Controller
                             $item_table_array = $items;
                             //$stepInfo = $this->stepObj->getById($step_id);
                             $itemInfo = $this->itemObj->getById($item_id);
+                            $supplierInfo = $this->supplierObj->getById($supplier_id);
                             $item_details = [
                                 'array_id' => time(),
                                 'item_id' => $item_id,
                                 'item_name' => (!empty($itemInfo)) ? $itemInfo->item_name : '',
+                                'supplier_id' => $supplier_id,
+                                'supplier_name' => (!empty($supplierInfo)) ? $supplierInfo->supplier_name : '',
                                 'quantity' => $quantity,
                                 'rate' => $rate,
                                 'amount' => $amount,
@@ -122,6 +132,8 @@ class CostController extends Controller
                                 'standard_amount' => $standard_amount,
                                 'increase_rate' => $increase_rate,
                                 'increase_amount' => $increase_amount,
+                                'notes' => $notes,
+                                'status' => $status,
                             ];
                             if (!empty($item_table_array)) {
                                 array_push($item_table_array, $item_details);
@@ -189,6 +201,8 @@ class CostController extends Controller
                 $this->costObj->user_id = $logginUserId;
                 $items = session()->get('arraydetailsSession');
                 if ((!empty($items))) {
+                    $this->costObj->amount_total = array_sum(array_column($items, 'amount'));
+                    $this->costObj->increase_amount_total = array_sum(array_column($items, 'increase_amount'));
                     $result = $this->costObj->save();
                     if (boolval($result)) {
                         $insertedCostId = intval($this->costObj->id);
@@ -198,13 +212,16 @@ class CostController extends Controller
                                 $data = [
                                     'cost_id' => $insertedCostId,
                                     'item_id' => $item['item_id'],
+                                    'supplier_id' => $item['supplier_id'],
                                     'quantity' => $item['quantity'],
                                     'rate' => $item['rate'],
                                     'amount' => $item['amount'],
                                     'standard_rate' => $item['standard_rate'],
                                     'standard_amount' => $item['standard_amount'],
                                     'increase_rate' => $item['increase_rate'],
-                                    'increase_amount' => $item['increase_amount']
+                                    'increase_amount' => $item['increase_amount'],
+                                    'notes' => $item['notes'],
+                                    'status' => $item['status']
                                 ];
                                 array_push($detailsData, $data);
                             }
