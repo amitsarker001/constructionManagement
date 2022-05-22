@@ -3,8 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="11753012-29fa-4d9e-8fb9-edbefd7e7432" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/SettingsHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/SettingsHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/LetterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/LetterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MiscellaneousController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MiscellaneousController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_03_12_235801_create_miscellaneouses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_03_12_235801_create_miscellaneouses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_05_07_121609_create_costs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_05_07_121609_create_costs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_05_20_120457_create_letters_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_05_20_120457_create_letters_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/costDetailsModal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/costDetailsModal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/detailsTable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/detailsTable.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/letter/letterDetailsPrint.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/letter/letterDetailsPrint.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/miscellaneous/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/miscellaneous/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/step/formFields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/step/formFields.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +192,11 @@
       <workItem from="1653135849783" duration="1705000" />
       <workItem from="1653137589195" duration="1754000" />
       <workItem from="1653142280164" duration="316000" />
-      <workItem from="1653151893362" duration="687000" />
+      <workItem from="1653151893362" duration="833000" />
+      <workItem from="1653229953741" duration="1751000" />
+      <workItem from="1653231729173" duration="1253000" />
+      <workItem from="1653233537284" duration="728000" />
+      <workItem from="1653235645979" duration="688000" />
     </task>
     <servers />
   </component>
@@ -212,10 +228,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1653027796885" />
-    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1653125979585">
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1653232730653">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1653125979585" />
+    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1653232730653" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1653115827789">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

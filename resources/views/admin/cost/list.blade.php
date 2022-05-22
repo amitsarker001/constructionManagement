@@ -24,6 +24,9 @@
                     <tr>
                         <th>SL</th>
                         <th>Step Name</th>
+                        @if(session()->get('userSession')->user_type_id == 1)
+                            <th>User</th>
+                        @endif
                         <th width="200px">Action</th>
                     </tr>
                     </thead>
@@ -32,6 +35,7 @@
                         <?php
                         $count = 1;
                         $stepObj = new \App\Step();
+                        $userObj = new \App\User();
                         ?>
                         @foreach($costList as $cost)
                             <?php
@@ -39,10 +43,16 @@
                             $stepId = !empty($cost->step_id) ? intval($cost->step_id) : 0;
                             $stepInfo = $stepObj->getById($stepId);
                             $stepName = !empty($stepInfo->step_name) ? $stepInfo->step_name : '';
+                            $userId = !empty($cost->user_id) ? intval($cost->user_id) : 0;
+                            $userInfo = $userObj->getById($userId);
+                            $userName = !empty($userInfo->user_name) ? $userInfo->user_name : '';
                             ?>
                             <tr>
                                 <td>{{ $count++ }}</td>
                                 <td>{{ $stepName }}</td>
+                                @if(session()->get('userSession')->user_type_id == 1)
+                                    <td>{{ $userName }}</td>
+                                @endif
                                 <td>
                                     <a href="{{ route('stepWiseCostDetails') }}"
                                        data-id="{{ $id }}" type="button"

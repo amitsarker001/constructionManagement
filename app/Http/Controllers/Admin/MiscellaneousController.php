@@ -81,6 +81,7 @@ class MiscellaneousController extends Controller
             $this->miscellaneousObj->total_cost = doubleval(trim($request->input('total_cost')));
             $this->miscellaneousObj->remarks = trim($request->input('remarks'));
             $this->miscellaneousObj->entry_date = trim($request->input('entry_date'));
+            $this->miscellaneousObj->user_id = $this->userObj->getLoggedinUserId();
             //$isExists = $this->miscellaneousObj->isColumnValueExist('cost_name', $this->miscellaneousObj->cost_name);
             $isExists = false;
             if (!boolval($isExists)) { // if email does not exists

@@ -12,8 +12,9 @@
                     <i class="fa fa-list" aria-hidden="true"></i> {{'Miscellaneous List'}}
                 </div>
                 <div class="col-xs-12 col-md-4">
-                    <a class="btn btn-secondary float-right" href="{{route('miscellaneousCreate')}}"><i class="fa fa-plus"
-                                                                                               aria-hidden="true"></i>&nbsp;Create</a>
+                    <a class="btn btn-secondary float-right" href="{{route('miscellaneousCreate')}}"><i
+                            class="fa fa-plus"
+                            aria-hidden="true"></i>&nbsp;Create</a>
                 </div>
             </div>
         </div>
@@ -29,12 +30,18 @@
                         <th>Unit Price</th>
                         <th>Total Cost</th>
                         <th>Remarks</th>
+                        @if(session()->get('userSession')->user_type_id == 1)
+                            <th>User</th>
+                        @endif
                         <th width="220px">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @if(!empty($miscellaneousList))
-                        <?php $count = 1; ?>
+                        <?php
+                        $count = 1;
+                        $userObj = new \App\User();
+                        ?>
                         @foreach($miscellaneousList as $miscellaneous)
                             <?php
                             $id = !empty($miscellaneous->id) ? intval($miscellaneous->id) : 0;
@@ -44,22 +51,29 @@
                             $totalCost = !empty($miscellaneous->total_cost) ? getFloat($miscellaneous->total_cost) : getFloat(0);
 
                             $remarks = !empty($miscellaneous->remarks) ? $miscellaneous->remarks : '';
-                            $entryDate = !empty($miscellaneous->entry_date) ? $miscellaneous->entry_date : '';
+                            $entryDate = !empty($miscellaneous->entry_date) ? getStringToDateFromatDmy($miscellaneous->entry_date) : '';
+                            $userId = !empty($miscellaneous->user_id) ? intval($miscellaneous->user_id) : 0;
+                            $userInfo = $userObj->getById($userId);
+                            $userName = !empty($userInfo->user_name) ? $userInfo->user_name : '';
                             ?>
                             <tr>
-                                <td>{{$count++}}</td>
-                                <td>{{$entryDate}}</td>
-                                <td>{{$costName}}</td>
-                                <td>{{$quantity}}</td>
-                                <td>{{$unitPrice}}</td>
-                                <td>{{$totalCost}}</td>
-                                <td>{{$remarks}}</td>
+                                <td>{{ $count++ }}</td>
+                                <td>{{ $entryDate }}</td>
+                                <td>{{ $costName }}</td>
+                                <td>{{ $quantity }}</td>
+                                <td>{{ $unitPrice }}</td>
+                                <td>{{ $totalCost }}</td>
+                                <td>{{ $remarks }}</td>
+                                @if(session()->get('userSession')->user_type_id == 1)
+                                    <td>{{ $userName }}</td>
+                                @endif
                                 <td>
-                                    <a style="margin: 1%" class="btn btn-danger float-right" href="{{route('miscellaneousDelete', ['id' => $id])}}"><i
+                                    <a style="margin: 1%" class="btn btn-danger float-right"
+                                       href="{{route('miscellaneousDelete', ['id' => $id])}}"><i
                                             class="fa fa-trash" aria-hidden="true"></i>Delete</a>
                                     <a style="margin: 1%" class="btn btn-secondary float-right"
                                        href="{{route('miscellaneousEdit', ['id' => $id])}}"><i class="fa fa-edit"
-                                                                                          aria-hidden="true"></i>Update</a>
+                                                                                               aria-hidden="true"></i>Update</a>
                                 </td>
                             </tr>
                         @endforeach

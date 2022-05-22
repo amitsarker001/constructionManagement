@@ -19,6 +19,7 @@ class CreateLettersTable extends Migration
             $table->timestamp('entry_date')->nullable();
             $table->text('subject')->nullable();
             $table->text('description')->nullable();
+            $table->integer('user_id')->default(0);
             $table->timestamps();
         });
     }

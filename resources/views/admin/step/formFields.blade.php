@@ -15,14 +15,14 @@
 </div>
 <div class="form-row">
     <div class="col-md-6">
-        <div class="form-group"><label class="small mb-1" for="quantity">Quantity</label><input
+        <div class="form-group"><label class="small mb-1" for="start_date">Start Date</label><input
                 class="form-control" id="start_date" name="start_date" type="date" placeholder="Start Date"
                 value="{{!empty($stepInfo->start_date) ?getFloat($stepInfo->start_date) : ''}}"
                 required>
         </div>
     </div>
     <div class="col-md-6">
-        <div class="form-group"><label class="small mb-1" for="unit_price">Unit Price</label><input
+        <div class="form-group"><label class="small mb-1" for="end_date">End Datek</label><input
                 class="form-control" id="end_date" name="end_date" type="date" placeholder="End Date"
                 value="{{!empty($stepInfo->end_date) ?getFloat($stepInfo->end_date) : ''}}">
         </div>

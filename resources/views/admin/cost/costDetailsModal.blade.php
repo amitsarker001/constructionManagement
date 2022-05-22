@@ -5,9 +5,9 @@
  */
 ?>
 
-<div id="costDetailsModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+<div id="costDetailsModal" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"
      aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ $data['pageTitle'] }}</h5>
@@ -59,6 +59,7 @@
                                 <tbody>
                                 <?php
                                 $count = 1;
+                                $amountSum = 0;
                                 $increaseAmountSum = 0;
                                 ?>
                                 @if(!empty($costDetails))
@@ -76,6 +77,7 @@
                                         $standardAmount = !empty($cost->standard_amount) ? ($cost->standard_amount) : 0;
                                         $increaseRate = !empty($cost->increase_rate) ? ($cost->increase_rate) : 0;
                                         $increaseAmount = !empty($cost->increase_amount) ? ($cost->increase_amount) : 0;
+                                        $amountSum += $amount;
                                         $increaseAmountSum += $increaseAmount;
                                         ?>
                                         <tr>
@@ -94,7 +96,11 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="8" class="font-weight-bold text-right">Total</td>
+                                    <td colspan="4" class="font-weight-bold text-right">Total</td>
+                                    <td class="font-weight-bold text-right">{{  getFloat($amountSum)  }}</td>
+                                    <td class="font-weight-bold text-right"></td>
+                                    <td class="font-weight-bold text-right"></td>
+                                    <td class="font-weight-bold text-right"></td>
                                     <td class="font-weight-bold text-right">{{  getFloat($increaseAmountSum)  }}</td>
                                 </tr>
                                 </tfoot>
@@ -174,6 +180,7 @@
                 <tbody>
                 <?php
                 $count = 1;
+                $amountSum = 0;
                 $increaseAmountSum = 0;
                 ?>
                 @if(!empty($costDetails))
@@ -191,6 +198,7 @@
                         $standardAmount = !empty($cost->standard_amount) ? ($cost->standard_amount) : 0;
                         $increaseRate = !empty($cost->increase_rate) ? ($cost->increase_rate) : 0;
                         $increaseAmount = !empty($cost->increase_amount) ? ($cost->increase_amount) : 0;
+                        $amountSum += $amount;
                         $increaseAmountSum += $increaseAmount;
                         ?>
                         <tr>
@@ -209,7 +217,11 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td colspan="8" class="font-weight-bold text-right">Total</td>
+                    <td colspan="4" class="font-weight-bold text-right">Total</td>
+                    <td class="font-weight-bold text-right">{{  getFloat($amountSum)  }}</td>
+                    <td class="font-weight-bold text-right"></td>
+                    <td class="font-weight-bold text-right"></td>
+                    <td class="font-weight-bold text-right"></td>
                     <td class="font-weight-bold text-right">{{  getFloat($increaseAmountSum)  }}</td>
                 </tr>
                 </tfoot>

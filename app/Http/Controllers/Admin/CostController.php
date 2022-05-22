@@ -14,7 +14,7 @@ use Session;
 
 class CostController extends Controller
 {
-
+    protected $userObj;
     protected $stepObj;
     protected $itemObj;
     protected $costObj;
@@ -28,6 +28,7 @@ class CostController extends Controller
      */
     public function __construct()
     {
+        $this->userObj = new User();
         $this->stepObj = new Step();
         $this->itemObj = new Item();
         $this->costObj = new Cost();
@@ -43,10 +44,9 @@ class CostController extends Controller
     public function index()
     {
         try {
-            $userObj = new User();
-            $logginUserId = $userObj->getLoggedinUserId();
+            $logginUserId = $this->userObj->getLoggedinUserId();
             if ($logginUserId > 0) {
-                $loggedInUserInfo = $userObj->getById($logginUserId);
+                $loggedInUserInfo = $this->userObj->getById($logginUserId);
                 $userTypeAccessArray = array(1, 3);
                 if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
                     $data = array(
@@ -68,10 +68,9 @@ class CostController extends Controller
     {
         try {
             $this->clearDetailsFromTable();
-            $userObj = new User();
-            $logginUserId = $userObj->getLoggedinUserId();
+            $logginUserId = $this->userObj->getLoggedinUserId();
             if ($logginUserId > 0) {
-                $loggedInUserInfo = $userObj->getById($logginUserId);
+                $loggedInUserInfo = $this->userObj->getById($logginUserId);
                 $userTypeAccessArray = array(1, 3);
                 if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
                     $data = array(
@@ -184,8 +183,10 @@ class CostController extends Controller
             if ($request->ajax()) {
                 $message = '';
                 $statusId = 0;
+                $logginUserId = $this->userObj->getLoggedinUserId();
                 $this->costObj->step_id = intval(trim($request->input('step_id')));
                 $this->costObj->entry_date = trim($request->input('entry_date'));
+                $this->costObj->user_id = $logginUserId;
                 $items = session()->get('arraydetailsSession');
                 if ((!empty($items))) {
                     $result = $this->costObj->save();
@@ -276,12 +277,11 @@ class CostController extends Controller
     public function costDelete($id = 0)
     {
         try {
-            $userObj = new User();
-            $logginUserId = $userObj->getLoggedinUserId();
+            $logginUserId = $this->userObj->getLoggedinUserId();
             if (($logginUserId) > 0 && intval($id) > 0) {
                 $costInfo = $this->costObj->getById($id);
                 if (!empty($costInfo)) {
-                    $loggedInUserInfo = $userObj->getById($logginUserId);
+                    $loggedInUserInfo = $this->userObj->getById($logginUserId);
                     $userTypeAccessArray = array(1, 3);
                     if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
                         $isUpdate = $this->costObj->deleteWhere(array('id' => $id));

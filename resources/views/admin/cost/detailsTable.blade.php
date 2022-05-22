@@ -29,6 +29,7 @@
         @endphp
         <?php
         $count = 1;
+        $amountSum = 0;
         $increaseAmountSum = 0;
         ?>
         @if(!empty($costList))
@@ -44,6 +45,7 @@
                 $standardAmount = !empty($cost['standard_amount']) ? ($cost['standard_amount']) : 0;
                 $increaseRate = !empty($cost['increase_rate']) ? ($cost['increase_rate']) : 0;
                 $increaseAmount = !empty($cost['increase_amount']) ? ($cost['increase_amount']) : 0;
+                $amountSum += $amount;
                 $increaseAmountSum += $increaseAmount;
                 ?>
                 <tr>
@@ -69,7 +71,11 @@
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="8" class="font-weight-bold text-right">Total</td>
+            <td colspan="4" class="font-weight-bold text-right">Total</td>
+            <td class="font-weight-bold text-right">{{  getFloat($amountSum)  }}</td>
+            <td class="font-weight-bold text-right"></td>
+            <td class="font-weight-bold text-right"></td>
+            <td class="font-weight-bold text-right"></td>
             <td class="font-weight-bold text-right">{{  getFloat($increaseAmountSum)  }}</td>
         </tr>
         </tfoot>

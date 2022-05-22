@@ -17,7 +17,7 @@ if (!function_exists('getUnitArray')) {
      */
     function getUnitArray()
     {
-        return array('Kg', 'Liter', 'Piece');
+        return array('Kg', 'Liter', 'Piece', 'Sqft', 'Bag', 'Cft', 'Area');
     }
 }
 

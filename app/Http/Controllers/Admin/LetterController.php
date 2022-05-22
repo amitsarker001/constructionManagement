@@ -81,6 +81,7 @@ class LetterController extends Controller
             $this->letterObj->entry_date = trim($request->input('entry_date'));
             $this->letterObj->subject = trim($request->input('subject'));
             $this->letterObj->description = trim($request->input('description'));
+            $this->letterObj->user_id = $this->userObj->getLoggedinUserId();
             $isExists = false;
             if (!boolval($isExists)) { // if does not exists
                 $result = $this->letterObj->save();

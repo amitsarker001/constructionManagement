@@ -21,6 +21,7 @@ class CreateMiscellaneousesTable extends Migration
             $table->double('total_cost')->default(0);
             $table->text('remarks')->nullable();
             $table->timestamp('entry_date')->nullable();
+            $table->integer('user_id')->default(0);
             $table->timestamps();
         });
     }
