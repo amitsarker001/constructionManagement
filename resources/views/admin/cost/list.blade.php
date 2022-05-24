@@ -24,6 +24,8 @@
                     <tr>
                         <th>SL</th>
                         <th>Step Name</th>
+                        <th class="text-right">Amount Total</th>
+                        <th class="text-right">Increase Amount Total</th>
                         @if(session()->get('userSession')->user_type_id == 1)
                             <th>User</th>
                         @endif
@@ -43,6 +45,8 @@
                             $stepId = !empty($cost->step_id) ? intval($cost->step_id) : 0;
                             $stepInfo = $stepObj->getById($stepId);
                             $stepName = !empty($stepInfo->step_name) ? $stepInfo->step_name : '';
+                            $amountTotal = !empty($cost->amount_total) ? ($cost->amount_total) : 0;
+                            $increaseAmountTotal = !empty($cost->increase_amount_total) ? ($cost->increase_amount_total) : 0;
                             $userId = !empty($cost->user_id) ? intval($cost->user_id) : 0;
                             $userInfo = $userObj->getById($userId);
                             $userName = !empty($userInfo->user_name) ? $userInfo->user_name : '';
@@ -50,6 +54,8 @@
                             <tr>
                                 <td>{{ $count++ }}</td>
                                 <td>{{ $stepName }}</td>
+                                <td class="text-right">{{ getFloat($amountTotal) }}</td>
+                                <td class="text-right">{{ getFloat($increaseAmountTotal) }}</td>
                                 @if(session()->get('userSession')->user_type_id == 1)
                                     <td>{{ $userName }}</td>
                                 @endif

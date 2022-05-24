@@ -35,4 +35,52 @@ class Cost_details extends Model
             'item_name' => ['required', 'string', 'max:255'],
         ]);
     }
+
+    public function getSupplierwiseList($supplierId = 0, $status = '')
+    {
+        if (intval($supplierId) > 0 && !empty($status)) {
+            return $query = DB::table($this->tableName)
+                ->leftJoin('suppliers', $this->tableName . '.supplier_id', '=', 'suppliers.id')
+                ->leftJoin('items', $this->tableName . '.item_id', '=', 'items.id')
+                ->leftJoin('costs', $this->tableName . '.cost_id', '=', 'costs.id')
+                ->leftJoin('steps', 'costs.step_id', '=', 'steps.id')
+                ->where($this->tableName . '.supplier_id', '=', $supplierId)
+                ->where($this->tableName . '.status', '=', $status)
+                ->orderByRaw('created_at DESC')
+                ->select($this->tableName . '.*', 'items.item_name', 'steps.step_name', 'suppliers.supplier_name')
+                ->get();
+        } elseif (intval($supplierId) > 0 && $status == '') {
+            return $query = DB::table($this->tableName)
+                ->leftJoin('suppliers', $this->tableName . '.supplier_id', '=', 'suppliers.id')
+                ->leftJoin('items', $this->tableName . '.item_id', '=', 'items.id')
+                ->leftJoin('costs', $this->tableName . '.cost_id', '=', 'costs.id')
+                ->leftJoin('steps', 'costs.step_id', '=', 'steps.id')
+                ->where($this->tableName . '.supplier_id', '=', $supplierId)
+//                ->where($this->tableName . '.status', '=', $status)
+                ->orderByRaw('created_at DESC')
+                ->select($this->tableName . '.*', 'items.item_name', 'steps.step_name', 'suppliers.supplier_name')
+                ->get();
+        } elseif (intval($supplierId) <= 0 && !empty($status)) {
+            return $query = DB::table($this->tableName)
+                ->leftJoin('suppliers', $this->tableName . '.supplier_id', '=', 'suppliers.id')
+                ->leftJoin('items', $this->tableName . '.item_id', '=', 'items.id')
+                ->leftJoin('costs', $this->tableName . '.cost_id', '=', 'costs.id')
+                ->leftJoin('steps', 'costs.step_id', '=', 'steps.id')
+//                ->where($this->tableName . '.supplier_id', '=', $supplierId)
+                ->where($this->tableName . '.status', '=', $status)
+                ->orderByRaw('created_at DESC')
+                ->select($this->tableName . '.*', 'items.item_name', 'steps.step_name', 'suppliers.supplier_name')
+                ->get();
+        } else {
+            return $query = DB::table($this->tableName)
+                ->leftJoin('suppliers', $this->tableName . '.supplier_id', '=', 'suppliers.id')
+                ->leftJoin('items', $this->tableName . '.item_id', '=', 'items.id')
+                ->leftJoin('costs', $this->tableName . '.cost_id', '=', 'costs.id')
+                ->leftJoin('steps', 'costs.step_id', '=', 'steps.id')
+//                ->where($this->tableName . '.supplier_id', '=', $supplierId)
+                ->orderByRaw('created_at DESC')
+                ->select($this->tableName . '.*', 'items.item_name', 'steps.step_name', 'suppliers.supplier_name')
+                ->get();
+        }
+    }
 }

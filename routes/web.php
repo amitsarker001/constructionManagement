@@ -42,6 +42,7 @@ Route::prefix('admin')->group(function () {
     Route::get('item/edit/{id}', 'Admin\ItemController@edit')->name('itemEdit');
     Route::post('item/itemUpdate', 'Admin\ItemController@itemUpdate')->name('itemUpdate');
     Route::get('item/itemDelete/{id}', 'Admin\ItemController@itemDelete')->name('itemDelete');
+    Route::get('item/getDetailsByItemId/{id?}', 'Admin\ItemController@getDetailsByItemId')->name('getDetailsByItemId');
 
     Route::get('supplier', 'Admin\SupplierController@index')->name('supplier');
     Route::get('supplier/create', 'Admin\SupplierController@create')->name('supplierCreate');
@@ -84,6 +85,9 @@ Route::prefix('admin')->group(function () {
     Route::get('letter/letterPrintToPdf/{id}', 'Admin\LetterController@letterPrintToPdf')->name('letterPrintToPdf');
     //Route::get('letter/letterDetailsPrint/{id}', 'Admin\LetterController@letterDetailsPrint')->name('letterDetailsPrint');
     Route::get('letter/letterDetailsPrint', 'Admin\LetterController@letterDetailsPrint')->name('letterDetailsPrint');
+
+    Route::get('reports/supplierwiseReport', 'Admin\ReportsController@supplierwiseReport')->name('supplierwiseReport');
+    Route::post('reports/supplierwiseReportView', 'Admin\ReportsController@supplierwiseReportView')->name('supplierwiseReportView');
 
 });
 

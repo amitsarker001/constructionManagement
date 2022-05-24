@@ -23,6 +23,17 @@ if (!function_exists('getUnitArray')) {
     }
 }
 
+if (!function_exists('getCostStatusArray')) {
+
+    /**
+     * @return array
+     */
+    function getCostStatusArray()
+    {
+        return array('Done', 'Due');
+    }
+}
+
 if (!function_exists('getUnitArray')) {
 
     /**

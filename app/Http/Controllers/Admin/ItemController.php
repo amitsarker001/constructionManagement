@@ -211,4 +211,20 @@ class ItemController extends Controller
         }
         return redirect()->route('adminSignin');
     }
+
+    public function getDetailsByItemId(Request $request)
+    {
+        try {
+            if ($request->ajax()) {
+                $itemObj = new Item();
+                $itemId = intval(trim($request->input('id')));
+                $itemInfo = $itemObj->getById($itemId);
+                return response()->json(['itemInfo' => $itemInfo, 'message' => ''], (200))->header('Content-Type', 'application/json'); // Status code here
+            } else {
+                return redirect()->route('/admin');
+            }
+        } catch (\Exception $e) {
+
+        }
+    }
 }

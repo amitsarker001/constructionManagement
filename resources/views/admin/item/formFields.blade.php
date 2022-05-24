@@ -32,8 +32,8 @@
                 <option value="">Please select</option>
                 <?php $unit = !empty($itemInfo->unit) ? $itemInfo->unit : ''; ?>
                 @if(!empty($unitArray))
-                    @foreach($unitArray as $key => $value)
-                        <option value="{{$key}}" {{($unit==$key) ? 'selected' : ''}}>{{$value}}</option>
+                    @foreach($unitArray as $value)
+                        <option value="{{$value}}" {{($value) ? 'selected' : ''}}>{{$value}}</option>
                     @endforeach
                 @endif
             </select>

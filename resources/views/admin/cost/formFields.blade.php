@@ -17,7 +17,8 @@
 <div class="form-row">
     <div class="col-md-4">
         <div class="form-group"><label class="small mb-1" for="item_id">Item Name</label>
-            <select class="form-control" id="item_id" name="item_id" required>
+            <select data-action="{{route('getDetailsByItemId')}}" class="form-control" id="item_id" name="item_id"
+                    required>
                 <option value="">Please select</option>
                 <?php $item_id = !empty($costInfo->item_id) ? $costInfo->item_id : 0; ?>
                 @if(!empty($itemList))
@@ -107,8 +108,13 @@
     <div class="col-md-4">
         <div class="form-group"><label class="small mb-1" for="status">Status</label>
             <select class="form-control" id="status" name="status" required>
-                <option value="Done">Done</option>
-                <option value="Due">Due</option>
+                <?php $status = !empty($costInfo->status) ? $costInfo->status : ''; ?>
+                @if(!empty(getCostStatusArray()))
+                    @foreach(getCostStatusArray() as $value)
+                        <option
+                            value="{{$value}}" {{($status == $value) ? 'selected' : ''}}>{{$value}}</option>
+                    @endforeach
+                @endif
             </select>
         </div>
     </div>
@@ -211,13 +217,47 @@
         });
     }
 
+    $('select[name=item_id]').change(function (event) {
+        event.preventDefault();
+        let standardRate = 0;
+        let standardAmount = 0;
+        let itemId = $(this).find("option:selected").val();
+        itemId = isNaN(itemId) ? 0 : itemId;
+        if (itemId > 0) {
+            $.ajax({
+                type: "GET",
+                url: $(this).data('action'),
+                data: {'id': itemId},
+                success: function (data) {
+                    // console.log(data['itemInfo'].standard_rate);
+                    standardRate = data['itemInfo'].standard_rate;
+                    standardAmount = data['itemInfo'].standard_amount;
+                    $('#standard_rate').val(parseFloat(standardRate).toFixed(2));
+                    $('#standard_amount').val(parseFloat(standardAmount).toFixed(2));
+                    amountCalculation();
+                },
+                error: function () {
+
+                }
+            });
+        } else {
+            $('#standard_rate').val('');
+            $('#standard_amount').val('');
+            amountCalculation();
+        }
+    });
+
     $('#quantity, #amount, #standard_rate, #standard_rate').keyup(function (e) {
         e.preventDefault();
+        amountCalculation();
+    });
+
+    function amountCalculation() {
         getRate();
         getStandardAmount();
         getIncreaseRate();
         getIncreaseAmount();
-    });
+    }
 
     function getRate() {
         let rate = 0;
@@ -258,5 +298,6 @@
         // }
         $('#increase_amount').val(increaseAmount.toFixed(2));
     }
+
 </script>
 
