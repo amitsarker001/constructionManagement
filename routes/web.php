@@ -86,8 +86,17 @@ Route::prefix('admin')->group(function () {
     //Route::get('letter/letterDetailsPrint/{id}', 'Admin\LetterController@letterDetailsPrint')->name('letterDetailsPrint');
     Route::get('letter/letterDetailsPrint', 'Admin\LetterController@letterDetailsPrint')->name('letterDetailsPrint');
 
+    Route::get('budget', 'Admin\BudgetController@index')->name('budget');
+    Route::get('budget/create', 'Admin\BudgetController@create')->name('budgetCreate');
+    Route::post('budget/budgetSave', 'Admin\BudgetController@budgetSave')->name('budgetSave');
+    Route::get('budget/edit/{id}', 'Admin\BudgetController@edit')->name('budgetEdit');
+    Route::post('budget/budgetUpdate', 'Admin\BudgetController@budgetUpdate')->name('budgetUpdate');
+    Route::get('budget/budgetDelete/{id}', 'Admin\BudgetController@budgetDelete')->name('budgetDelete');
+
     Route::get('reports/supplierwiseReport', 'Admin\ReportsController@supplierwiseReport')->name('supplierwiseReport');
     Route::post('reports/supplierwiseReportView', 'Admin\ReportsController@supplierwiseReportView')->name('supplierwiseReportView');
+    Route::get('reports/costSummaryReport', 'Admin\ReportsController@costSummaryReport')->name('costSummaryReport');
+    Route::post('reports/costSummaryReportView', 'Admin\ReportsController@costSummaryReportView')->name('costSummaryReportView');
 
 });
 

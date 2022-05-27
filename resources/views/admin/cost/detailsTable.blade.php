@@ -68,7 +68,7 @@
                     <td class="text-right">{{ ($status) }}</td>
                     <td class="text-right">{{ ($notes) }}</td>
                     <td>
-                        <a data-toggle="tooltip" data-placement="bottom" title="View Details"
+                        <a data-toggle="tooltip" data-placement="bottom" title="Remove"
                            type="button" style="margin: 1%" class="btn btn-danger float-right removeDetailsButton"
                            data-id="{{ $array_id }}"
                            href="{{route('removeDetailsFromTable', ['id' => $array_id])}}"><i

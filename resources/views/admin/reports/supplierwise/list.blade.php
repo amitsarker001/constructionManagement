@@ -46,6 +46,68 @@
         </table>
     </div>
 </div>
+
+<div id="DivIdToPrint" style="display: none;">
+    <style>
+        .print-table, th, td {
+            border: 1px solid;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        .font-weight-bold {
+            font-weight: bold;
+        }
+    </style>
+    <div id="" class="w-100">
+        <div class="font-weight-bold">
+            Supplier Report
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Supplier</th>
+                    <th>Step</th>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $supplierwiseReport = !empty($data['supplierwiseReport']) ? $data['supplierwiseReport'] : '';
+                ?>
+                @if(!empty($supplierwiseReport))
+                    <?php $count = 1; ?>
+                    @foreach($supplierwiseReport as $report)
+                        <?php
+                        $supplierName = !empty($report->supplier_name) ? ($report->supplier_name) : '';
+                        $stepName = !empty($report->step_name) ? ($report->step_name) : '';
+                        $itemName = !empty($report->item_name) ? ($report->item_name) : '';
+                        $status = !empty($report->status) ? ($report->status) : '';
+                        $notes = !empty($report->notes) ? ($report->notes) : '';
+                        ?>
+                        <tr>
+                            <td>{{$count++}}</td>
+                            <td>{{$supplierName}}</td>
+                            <td>{{$stepName}}</td>
+                            <td>{{$itemName}}</td>
+                            <td>{{$status}}</td>
+                            <td>{{$notes}}</td>
+                        </tr>
+                    @endforeach
+                @endif
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     supplierwiseReportShow();
 
@@ -102,4 +164,10 @@
             }
         });
     }
+
+    $('#printButton').click(function (e) {
+        e.preventDefault();
+        printDivById('DivIdToPrint')
+    });
+
 </script>

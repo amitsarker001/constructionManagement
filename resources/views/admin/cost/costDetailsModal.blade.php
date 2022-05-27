@@ -126,7 +126,7 @@
 
 <div id="DivIdToPrint" class="w-100 d-none" style="width: 100%;">
     <style>
-        .costDetailsSectionTable, th, td {
+        .print-table, th, td {
             border: 1px solid;
         }
 
@@ -162,7 +162,7 @@
         $costDetails = !empty($data['costDetails']) ? $data['costDetails'] : '';
         ?>
         @if(!empty($costDetails))
-            <table class="table costDetailsSectionTable" id="" width="100%" cellspacing="0"
+            <table class="table print-table" id="" width="100%" cellspacing="0"
                    style="border: 1px solid black; width: 100%; border-collapse: collapse;">
                 <thead>
                 <tr>
@@ -240,21 +240,4 @@
         printDivById('DivIdToPrint')
     });
 
-    function printDiv(className) {
-        var divContents = $('.' + className).html();
-        var printWindow = window.open();
-        printWindow.document.write(divContents);
-        printWindow.document.close();
-        printWindow.print();
-        printWindow.close();
-    }
-
-    function printDivById(divId) {
-        var divContents = $('#' + divId).html();
-        var printWindow = window.open();
-        printWindow.document.write(divContents);
-        printWindow.document.close();
-        printWindow.print();
-        printWindow.close();
-    }
 </script>

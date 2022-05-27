@@ -4,19 +4,20 @@
     <list default="true" id="11753012-29fa-4d9e-8fb9-edbefd7e7432" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Cost_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cost_details.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/SettingsHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/SettingsHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ItemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReportsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReportsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/formFields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/formFields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/costDetailsModal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/costDetailsModal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/detailsTable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/detailsTable.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/cost/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cost/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/item/formFields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/item/formFields.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/assessment/assessmentDetailsModal.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/assessment/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/assessment/pdfDesign/assessmentDetailsPdf.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/assessment/pdfDesign/customCssForPdf.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/assessment/pdfDesign/frontPageHeaderPdf.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/assessment/pdfDesign/personalInfoPdf.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/letter/letterDetailsPrint.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/letter/letterDetailsPrint.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/cost_summary/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/cost_summary/list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/supplierwise/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/reports/supplierwise/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/supplierwise/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/reports/supplierwise/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +28,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -133,18 +141,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/reports/cost_summary" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/budget" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\budget" />
+      <recent name="F:\xampp\htdocs\constructionManagement\app\Http\Controllers\Admin" />
+      <recent name="F:\xampp\htdocs\constructionManagement\app" />
       <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports\cost_summary" />
       <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports\supplierwise" />
-      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports" />
-      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\cost" />
-      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\letter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports\supplierwise" />
@@ -204,7 +212,11 @@
       <workItem from="1653320586629" duration="1798000" />
       <workItem from="1653322434086" duration="1120000" />
       <workItem from="1653324539061" duration="997000" />
-      <workItem from="1653403233818" duration="10747000" />
+      <workItem from="1653403233818" duration="10889000" />
+      <workItem from="1653494828029" duration="602000" />
+      <workItem from="1653582416441" duration="3778000" />
+      <workItem from="1653632067001" duration="3858000" />
+      <workItem from="1653659454124" duration="5245000" />
     </task>
     <servers />
   </component>
@@ -240,10 +252,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1653027796885" />
-    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1653320874493">
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1653589989584">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1653320874493" />
+    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1653589989584" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1653663430189">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1653663430189" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1653115827789">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

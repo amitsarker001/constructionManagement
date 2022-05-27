@@ -50,7 +50,7 @@
                         <button data-action="{{route('costSave')}}" type="submit"
                                 style="margin-top: 7%;" id="" class="btn btn-info saveButton"><i class="fa fa-save"
                                                                                                  aria-hidden="true"></i>
-                            Save
+                            {{ $buttonText }}
                         </button>
                     </div>
                 </div>

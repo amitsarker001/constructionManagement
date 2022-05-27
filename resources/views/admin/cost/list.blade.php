@@ -29,7 +29,7 @@
                         @if(session()->get('userSession')->user_type_id == 1)
                             <th>User</th>
                         @endif
-                        <th width="200px">Action</th>
+                        <th width="291px">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -68,7 +68,7 @@
                                     <a class="btn btn-danger float-right deleteButton"
                                        href="{{route('costDelete', ['id' => $id])}}"><i
                                             class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-                                    <a class="btn btn-secondary float-right d-none"
+                                    <a class="btn btn-secondary float-right"
                                        href="{{route('costEdit', ['id' => $id])}}"><i class="fa fa-edit"
                                                                                       aria-hidden="true"></i>Update</a>
                                     <div class="viewDetailsDetailsModalSection"></div>

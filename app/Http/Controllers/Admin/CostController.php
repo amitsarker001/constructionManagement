@@ -62,7 +62,7 @@ class CostController extends Controller
                 }
             }
             return redirect()->route('adminSignin');
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
 
         }
     }
@@ -89,7 +89,7 @@ class CostController extends Controller
                 }
             }
             return redirect()->route('adminSignin');
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
 
         }
     }
@@ -158,7 +158,7 @@ class CostController extends Controller
             } else {
                 return redirect()->route('costCreate')->with('error', $message = '');
             }
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
 
         }
     }
@@ -183,7 +183,7 @@ class CostController extends Controller
                     echo $tableHtml = $tableHtml->render();
                 }
             }
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
 
         }
         //return redirect()->route('costCreate')->with('error', $message);
@@ -247,7 +247,7 @@ class CostController extends Controller
                         'Charset' => 'utf-8'
                     ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
             }
-        } catch (Exception $e) {
+        } catch (Exception $ex) {
 
         }
     }
@@ -272,7 +272,7 @@ class CostController extends Controller
             } else {
                 return redirect()->route('/admin');
             }
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
 
         }
     }
@@ -286,7 +286,7 @@ class CostController extends Controller
                 request()->session()->forget('arraydetailsSession');
             }
             return redirect()->route('costCreate')->with('error', $message);
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
 
         }
     }
@@ -321,14 +321,78 @@ class CostController extends Controller
                 }
             }
             return redirect()->route('adminSignin');
-        } catch (\Exception $e) {
+        } catch (\Exception $ex) {
 
         }
     }
 
     public function edit($id = 0)
     {
-        return redirect('admin/dashboard');
+        try {
+            $this->clearDetailsFromTable();
+            $logginUserId = $this->userObj->getLoggedinUserId();
+            if ($logginUserId > 0 && intval($id) > 0) {
+                $loggedInUserInfo = $this->userObj->getById($logginUserId);
+                $userTypeAccessArray = array(1, 3);
+                if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
+                    $costInfo = $this->costObj->getById($id);
+                    if (!empty($costInfo)) {
+                        $stepInfo = !empty($costInfo->step_id) ? $this->stepObj->getById($costInfo->step_id) : '';
+                        $costDetailsInfo = $this->costDetailsObj->getCostDetailsByCostId($id);
+                        //$costDetailsInfo = $this->costDetailsObj->getWhere(['cost_id' => $id]);
+                        if (!empty($costDetailsInfo)) {
+                            $count = 0;
+                            $items = session()->get('arraydetailsSession');
+                            $item_table_array = $items;
+                            foreach ($costDetailsInfo as $details) {
+                                $item_details = [
+                                    'array_id' => $details->id,
+                                    'item_id' => $details->item_id,
+                                    'item_name' => (!empty($details->item_name)) ? $details->item_name : '',
+                                    'supplier_id' => $details->supplier_id,
+                                    'supplier_name' => (!empty($details->supplier_name)) ? $details->supplier_name : '',
+                                    'quantity' => $details->quantity,
+                                    'rate' => $details->rate,
+                                    'amount' => $details->amount,
+                                    'standard_rate' => $details->standard_rate,
+                                    'standard_amount' => $details->standard_amount,
+                                    'increase_rate' => $details->increase_rate,
+                                    'increase_amount' => $details->increase_amount,
+                                    'notes' => $details->notes,
+                                    'status' => $details->status,
+                                ];
+                                if (!empty($item_table_array)) {
+                                    array_push($item_table_array, $item_details);
+                                } else {
+                                    $item_table_array = array();
+                                    array_push($item_table_array, $item_details);
+                                }
+                            }
+//                            getPrintr($item_table_array);
+                            request()->session()->put('arraydetailsSession', $item_table_array);
+                            $arraydetailsSession = session()->get('arraydetailsSession');
+                        }
+
+                        $data = array(
+                            'pageTitle' => 'Update',
+                            'buttonText' => 'Update',
+                            'stepList' => $this->stepObj->getAll(),
+                            'itemList' => $this->itemObj->getAll(),
+                            'supplierList' => $this->supplierObj->getAll(),
+                            'costInfo' => $costInfo,
+                            'stepInfo' => $stepInfo,
+                            'costDetailsInfo' => $costDetailsInfo,
+                        );
+                        return view('admin.cost.edit')->with($data);
+                    }
+                } else {
+                    return redirect('admin/dashboard');
+                }
+            }
+            return redirect()->route('adminSignin');
+        } catch (\Exception $ex) {
+
+        }
     }
 
     public function itemUpdate(Request $request)

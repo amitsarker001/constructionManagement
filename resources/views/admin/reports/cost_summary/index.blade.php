@@ -6,7 +6,7 @@
 ?>
 @extends('admin.layouts.admin')
 @section('content')
-{{--    <h1 class="mt-4">{{$pageTitle}}</h1>--}}
+    {{--    <h1 class="mt-4">{{$pageTitle}}</h1>--}}
     <div class="w-100">
         <div class="w-100">
             <div class="card mb-4">
@@ -16,9 +16,7 @@
                             <i class="fa fa-list" aria-hidden="true"></i> {{ $pageTitle }}
                         </div>
                         <div class="col-xs-12 col-md-4">
-{{--                            <a class="btn btn-secondary float-right" href="{{route('itemCreate')}}"><i--}}
-{{--                                    class="fa fa-plus"--}}
-{{--                                    aria-hidden="true"></i>&nbsp;Create</a>--}}
+                            <button id="printButton" type="button" class="btn btn-info float-right"><i class="fa fa-print" aria-hidden="true"></i> Print</button>
                         </div>
                     </div>
                 </div>
@@ -27,7 +25,7 @@
                           method="POST"
                           action="{{route('supplierwiseReportView')}}">
                         {{csrf_field()}}
-                        <div class="form-row">
+                        <div class="form-row d-none">
                             <div class="col-md-4">
                                 <div class="form-group"><label class="small mb-1" for="supplier_id">Supplier
                                         Name</label>
@@ -66,7 +64,7 @@
                             </div>
                         </div>
                     </form>
-                    @include('admin.reports.supplierwise.list')
+                    @include('admin.reports.cost_summary.list')
                 </div>
             </div>
         </div>
