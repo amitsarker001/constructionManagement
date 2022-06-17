@@ -104,9 +104,10 @@ class ReportsController extends Controller
                 $loggedInUserInfo = $this->userObj->getById($logginUserId);
                 $userTypeAccessArray = array(1, 3);
                 if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
+//                    getPrintr($this->costObj->getCostSummaryReport());
                     $data = array(
                         'pageTitle' => 'Cost Summary',
-                        'costList' => $this->costObj->getAll(),
+                        'costList' => $this->costObj->getCostSummaryReport(),
                     );
                     return view('admin.reports.cost_summary.index')->with($data);
                 } else {
@@ -136,6 +137,55 @@ class ReportsController extends Controller
             }
         } else {
             $this->costSummaryReport();
+        }
+    }
+
+    public function stepwiseCostReport()
+    {
+        try {
+            $logginUserId = $this->userObj->getLoggedinUserId();
+            if ($logginUserId > 0) {
+                $data = array(
+                    'pageTitle' => 'Stepwise Cost Report',
+                    'stepList' => $this->stepObj->getAll(),
+                    'isAjax' => false,
+                    'stepwiseReport' => $this->costDetailsObj->getStepwiseCostDetailsList(),
+                );
+                return view('admin.reports.stepwise_cost.index')->with($data);
+            } else {
+                return redirect()->route('adminSignin');
+            }
+        } catch (Exception $ex) {
+
+        }
+    }
+
+    public function stepwiseCostReportView(Request $request)
+    {
+        try {
+            if ($request->ajax()) {
+                $logginUserId = $this->userObj->getLoggedinUserId();
+                if ($logginUserId > 0) {
+                    $stepId = intval(trim($request->input('step_id')));
+                    $stepInfo = $this->stepObj->getById($stepId);
+                    $stepwiseReport = $this->costDetailsObj->getStepwiseCostDetailsList($stepId);
+                    $data = array(
+                        'pageTitle' => 'Stepwise Cost Report',
+                        'stepList' => $this->stepObj->getAll(),
+                        'isAjax' => true,
+                        'stepInfo' => $stepInfo,
+                        'stepwiseReport' => $stepwiseReport,
+                    );
+                    $html = view('admin.reports.stepwise_cost.list')->with('data', $data);
+                    echo $html = $html->render();
+                } else {
+                    return redirect()->route('adminSignin');
+                }
+            } else {
+                $this->stepwiseCostReport();
+            }
+        } catch (Exception $ex) {
+
         }
     }
 

@@ -97,6 +97,8 @@ Route::prefix('admin')->group(function () {
     Route::post('reports/supplierwiseReportView', 'Admin\ReportsController@supplierwiseReportView')->name('supplierwiseReportView');
     Route::get('reports/costSummaryReport', 'Admin\ReportsController@costSummaryReport')->name('costSummaryReport');
     Route::post('reports/costSummaryReportView', 'Admin\ReportsController@costSummaryReportView')->name('costSummaryReportView');
+    Route::get('reports/stepwiseCostReport', 'Admin\ReportsController@stepwiseCostReport')->name('stepwiseCostReport');
+    Route::post('reports/stepwiseCostReportView', 'Admin\ReportsController@stepwiseCostReportView')->name('stepwiseCostReportView');
 
 });
 

@@ -121,5 +121,21 @@ class Cost_details extends Model
 //            return false;
 //        }
 //    }
+    public function getStepwiseCostDetailsList($stepId = 0)
+    {
+        if (intval($stepId) > 0) {
+            return $query = DB::table($this->tableName)
+                ->leftJoin('suppliers', $this->tableName . '.supplier_id', '=', 'suppliers.id')
+                ->leftJoin('items', $this->tableName . '.item_id', '=', 'items.id')
+//                ->leftJoin('costs', $this->tableName . '.cost_id', '=', 'costs.id')
+                ->leftJoin('steps', $this->tableName.'.step_id', '=', 'steps.id')
+                ->where($this->tableName . '.step_id', '=', $stepId)
+                ->orderByRaw('created_at DESC')
+                ->select($this->tableName . '.*', 'items.item_name', 'steps.step_name', 'suppliers.supplier_name')
+                ->get();
+//                ->toSql();
+//            DB::table('users')->toSql()
+        }
+    }
 
 }

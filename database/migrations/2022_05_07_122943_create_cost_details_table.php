@@ -16,6 +16,7 @@ class CreateCostDetailsTable extends Migration
         Schema::create('cost_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('cost_id')->default(0);
+            $table->integer('step_id')->default(0);
             $table->integer('item_id')->default(0);
             $table->integer('supplier_id')->default(0);
             $table->double('quantity')->default(0);

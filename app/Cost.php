@@ -35,4 +35,14 @@ class Cost extends Model
             'item_name' => ['required', 'string', 'max:255'],
         ]);
     }
+
+    public function getCostSummaryReport()
+    {
+        return DB::table($this->tableName)
+            ->select(DB::raw("step_id, SUM(amount_total) as amount_total, SUM(increase_amount_total) as increase_amount_total, (select step_name from steps where steps.id=costs.step_id) as step_name"))
+            ->orderBy("step_id")
+            ->groupBy(DB::raw("step_id"))
+            ->get();
+//        ->toSql();
+    }
 }

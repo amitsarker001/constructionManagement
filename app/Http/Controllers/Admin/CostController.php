@@ -196,7 +196,8 @@ class CostController extends Controller
                 $message = '';
                 $statusId = 0;
                 $logginUserId = $this->userObj->getLoggedinUserId();
-                $this->costObj->step_id = intval(trim($request->input('step_id')));
+                $step_id = intval(trim($request->input('step_id')));
+                $this->costObj->step_id = $step_id;
                 $this->costObj->entry_date = trim($request->input('entry_date'));
                 $this->costObj->user_id = $logginUserId;
                 $items = session()->get('arraydetailsSession');
@@ -211,6 +212,7 @@ class CostController extends Controller
                             foreach ($items as $item) {
                                 $data = [
                                     'cost_id' => $insertedCostId,
+                                    'step_id' => $step_id,
                                     'item_id' => $item['item_id'],
                                     'supplier_id' => $item['supplier_id'],
                                     'quantity' => $item['quantity'],

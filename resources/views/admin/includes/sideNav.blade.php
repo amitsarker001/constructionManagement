@@ -70,14 +70,6 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
                 Miscellaneous
             </a>
-            <a class="nav-link" href="{{route('letter')}}">
-                <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
-                Letters
-            </a>
-            <a class="nav-link" href="{{route('budget')}}">
-                <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
-                Budget
-            </a>
             {{--            @endif--}}
 
 {{--            <div class="sb-sidenav-menu-heading">Interface</div>--}}
@@ -99,6 +91,20 @@
                     <a class="nav-link" href="{{route('costSummaryReport')}}">Cost Report</a>
                 </nav>
             </div>
+            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                 data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{route('stepwiseCostReport')}}">Stepwsie Cost Report</a>
+                </nav>
+            </div>
+            <a class="nav-link" href="{{route('budget')}}">
+                <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
+                Budget
+            </a>
+            <a class="nav-link" href="{{route('letter')}}">
+                <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
+                Letters
+            </a>
         </div>
     </div>
     <div class="sb-sidenav-footer">

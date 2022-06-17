@@ -18,7 +18,7 @@
                 <th class="text-right">Amount Total</th>
                 <th class="text-right">Increase Amount Total</th>
                 @if(session()->get('userSession')->user_type_id == 1)
-                    <th>User</th>
+{{--                    <th>User</th>--}}
                 @endif
             </tr>
             </thead>
@@ -47,7 +47,7 @@
                         <td class="text-right">{{ getFloat($amountTotal) }}</td>
                         <td class="text-right">{{ getFloat($increaseAmountTotal) }}</td>
                         @if(session()->get('userSession')->user_type_id == 1)
-                            <td>{{ $userName }}</td>
+{{--                            <td>{{ $userName }}</td>--}}
                         @endif
                     </tr>
                 @endforeach
@@ -120,59 +120,6 @@
 </div>
 
 <script type="text/javascript">
-    costSummaryReportShow();
-
-    function costSummaryReportShow() {
-        var thisForm = $('#supplierwiseReportForm');
-        thisForm.validate({
-            ignore: [],
-            rules: {
-                step_id: "required",
-            },
-            messages: {
-                step_id: "Please Select Step",
-            },
-            errorElement: "em",
-            errorPlacement: function (error, element) {
-                // Add the `help-block` class to the error element
-                error.addClass("help-block");
-                if (element.prop("type") === "checkbox") {
-                    error.insertAfter(element.parent("label"));
-                } else {
-                    error.insertAfter(element);
-                }
-                if (element.attr("name") === "item_id") {
-                    error.insertAfter(".bootstrap-select.item_id");
-                } else {
-                    error.insertAfter(element);
-                }
-                if (element.attr("name") === "item_id") {
-                    error.insertAfter(".select2-selection #select2-item_id-container");
-                } else {
-                    error.insertAfter(element);
-                }
-            },
-            highlight: function (element, errorClass, validClass) {
-                $(element).parents(".error-message").addClass("has-error").removeClass("has-success");
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).parents(".error-message").addClass("has-success").removeClass("has-error");
-            },
-            submitHandler: function (form) {
-                $.ajax({
-                    type: "POST",
-                    url: thisForm.attr('action'),
-                    data: thisForm.serialize(),
-                    success: function (data) {
-                        $('#reportTableSection').html(data);
-                    },
-                    error: function () {
-
-                    }
-                });
-            }
-        });
-    }
 
     $('#printButton').click(function (e) {
         e.preventDefault();
