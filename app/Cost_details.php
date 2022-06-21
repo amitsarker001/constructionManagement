@@ -134,7 +134,22 @@ class Cost_details extends Model
                 ->select($this->tableName . '.*', 'items.item_name', 'steps.step_name', 'suppliers.supplier_name')
                 ->get();
 //                ->toSql();
-//            DB::table('users')->toSql()
+        }
+    }
+
+    public function getItemwiseCostDetailsList($itemId = 0)
+    {
+        if (intval($itemId) > 0) {
+            return $query = DB::table($this->tableName)
+                ->leftJoin('suppliers', $this->tableName . '.supplier_id', '=', 'suppliers.id')
+                ->leftJoin('items', $this->tableName . '.item_id', '=', 'items.id')
+//                ->leftJoin('costs', $this->tableName . '.cost_id', '=', 'costs.id')
+                ->leftJoin('steps', $this->tableName.'.step_id', '=', 'steps.id')
+                ->where($this->tableName . '.item_id', '=', $itemId)
+                ->orderByRaw('created_at DESC')
+                ->select($this->tableName . '.*', 'items.item_name', 'steps.step_name', 'suppliers.supplier_name')
+                ->get();
+//                ->toSql();
         }
     }
 

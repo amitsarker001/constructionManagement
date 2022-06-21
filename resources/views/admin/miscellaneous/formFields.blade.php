@@ -32,7 +32,7 @@
     <div class="col-md-6">
         <div class="form-group"><label class="small mb-1" for="total_cost">Total Cost</label><input
                 class="form-control" id="total_cost" name="total_cost" type="number"
-                placeholder="Unit Price"
+                placeholder="Total Cost"
                 value="{{!empty($miscellaneousInfo->total_cost) ?getFloat($miscellaneousInfo->total_cost) : ''}}"
                 required></div>
     </div>

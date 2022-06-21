@@ -60,7 +60,10 @@
             </div>
             {{--            @if(in_array(session()->get('userSession')->user_type_id, $arr))--}}
 
-
+            <a class="nav-link" href="{{route('receiveDetails')}}">
+                <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
+                Receive Details
+            </a>
 
             <a class="nav-link" href="{{route('cost')}}">
                 <div class="sb-nav-link-icon"><i class="fas fa-product-hunt"></i></div>
@@ -95,6 +98,12 @@
                  data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="{{route('stepwiseCostReport')}}">Stepwsie Cost Report</a>
+                </nav>
+            </div>
+            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                 data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{route('itemwiseCostReport')}}">Itemwsie Cost Report</a>
                 </nav>
             </div>
             <a class="nav-link" href="{{route('budget')}}">

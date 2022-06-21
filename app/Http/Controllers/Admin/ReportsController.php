@@ -189,4 +189,53 @@ class ReportsController extends Controller
         }
     }
 
+    public function itemwiseCostReport()
+    {
+        try {
+            $logginUserId = $this->userObj->getLoggedinUserId();
+            if ($logginUserId > 0) {
+                $data = array(
+                    'pageTitle' => 'Item wise Cost Report',
+                    'itemList' => $this->itemObj->getAll(),
+                    'isAjax' => false,
+                    'itemwiseReport' => $this->costDetailsObj->getStepwiseCostDetailsList(),
+                );
+                return view('admin.reports.itemwise_cost.index')->with($data);
+            } else {
+                return redirect()->route('adminSignin');
+            }
+        } catch (Exception $ex) {
+
+        }
+    }
+
+    public function itemwiseCostReportView(Request $request)
+    {
+        try {
+            if ($request->ajax()) {
+                $logginUserId = $this->userObj->getLoggedinUserId();
+                if ($logginUserId > 0) {
+                    $itemId = intval(trim($request->input('item_id')));
+                    $itemInfo = $this->itemObj->getById($itemId);
+                    $itemwiseReport = $this->costDetailsObj->getItemwiseCostDetailsList($itemId);
+                    $data = array(
+                        'pageTitle' => 'Item wise Cost Report',
+                        'itemList' => $this->itemObj->getAll(),
+                        'isAjax' => true,
+                        'itemInfo' => $itemInfo,
+                        'itemwiseReport' => $itemwiseReport,
+                    );
+                    $html = view('admin.reports.itemwise_cost.list')->with('data', $data);
+                    echo $html = $html->render();
+                } else {
+                    return redirect()->route('adminSignin');
+                }
+            } else {
+                $this->itemwiseCostReport();
+            }
+        } catch (Exception $ex) {
+
+        }
+    }
+
 }

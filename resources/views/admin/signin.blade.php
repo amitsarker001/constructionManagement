@@ -54,7 +54,7 @@
                                     <div class="form-group"><label class="small mb-1"
                                                                    for="inputEmailAddress"><strong>Email</strong></label><input
                                             class="form-control py-4" id="inputEmailAddress" type="email" name="email"
-                                            required value="admin@gmail.com"
+                                            required value="halim@gmail.com"
                                             placeholder="Enter email address"/></div>
                                     <div class="form-group"><label class="small mb-1"
                                                                    for="inputPassword"><strong>Password</strong></label><input

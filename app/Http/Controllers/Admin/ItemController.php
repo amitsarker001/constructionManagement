@@ -77,7 +77,7 @@ class ItemController extends Controller
             $itemObj->item_name = trim($request->input('item_name'));
             $itemObj->item_code = trim($request->input('item_code'));
             $itemObj->unit = trim($request->input('unit'));
-            $itemObj->unit_price = intval(trim($request->input('unit_price')));
+            $itemObj->unit_price = doubleval(trim($request->input('unit_price')));
             $itemObj->standard_rate = doubleval(trim($request->input('standard_rate')));
             $itemObj->standard_amount = doubleval(trim($request->input('standard_amount')));
             $itemObj->item_description = trim($request->input('item_description'));
@@ -142,7 +142,7 @@ class ItemController extends Controller
             $itemName = trim($request->input('item_name'));
             $itemCode = trim($request->input('item_code'));
             $unit = trim($request->input('unit'));
-            $unitPrice = intval(trim($request->input('unit_price')));
+            $unitPrice = doubleval(trim($request->input('unit_price')));
             $standardRate = doubleval(trim($request->input('standard_rate')));
             $standardAmount = doubleval(trim($request->input('standard_amount')));
             $itemDescription = trim($request->input('item_description'));

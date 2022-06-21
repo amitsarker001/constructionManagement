@@ -21,20 +21,20 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form id="supplierwiseReportForm" name="supplierwiseReportForm" class="supplierwiseReportForm"
+                    <form id="reportForm" name="reportForm" class="reportForm"
                           method="POST"
-                          action="{{route('stepwiseCostReportView')}}">
+                          action="{{route('itemwiseCostReportView')}}">
                         {{csrf_field()}}
                         <div class="form-row">
                             <div class="col-md-4">
-                                <div class="form-group"><label class="small mb-1" for="supplier_id">Step</label>
-                                    <select class="form-control" id="step_id" name="step_id" required>
+                                <div class="form-group"><label class="small mb-1" for="supplier_id">Item</label>
+                                    <select class="form-control" id="item_id" name="item_id" required>
                                         <option value="">Please Select</option>
-                                        <?php $step_id = 0; ?>
-                                        @if(!empty($stepList))
-                                            @foreach($stepList as $step)
+                                        <?php $item_id = 0; ?>
+                                        @if(!empty($itemList))
+                                            @foreach($itemList as $item)
                                                 <option
-                                                    value="{{$step->id}}" {{($step_id == $step->id) ? 'selected' : ''}}>{{$step->step_name}}</option>
+                                                    value="{{$item->id}}" {{($item_id == $item->id) ? 'selected' : ''}}>{{$item->item_name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </form>
-                    @include('admin.reports.stepwise_cost.list')
+                    @include('admin.reports.itemwise_cost.list')
                 </div>
             </div>
         </div>

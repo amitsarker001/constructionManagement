@@ -32,6 +32,16 @@
         </div>
     </div>
     <div class="col-md-6">
+        <div class="form-group"><label class="small mb-1" for="funds_remaining">Funds Used To Date</label><input
+                class="form-control" id="total_receive_amount" name="total_receive_amount" type="number"
+                placeholder="Funds Used To Date"
+                value="{{ getFloat($totalReceiveAmount) }}"
+                required>
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col-md-6">
         <div class="form-group"><label class="small mb-1" for="funds_remaining">Funds Remaining</label><input
                 class="form-control" id="funds_remaining" name="funds_remaining" type="number"
                 placeholder="Funds Remaining"
@@ -39,19 +49,19 @@
                 required>
         </div>
     </div>
-</div>
-<div class="form-row">
     <div class="col-md-6">
-        <div class="form-group"><label class="small mb-1" for="entry_date">Entry Date</label><input
-                class="form-control" id="entry_date" name="entry_date" type="date"
-                placeholder="entry_date"
-                value="{{!empty($budgetInfo->entry_date) ? getStringToDateFormat($budgetInfo->entry_date) : ''}}"
-                required>
+        <div class="col-md-6 float-left">
+            <div class="form-group"><label class="small mb-1" for="entry_date">Entry Date</label><input
+                    class="form-control" id="entry_date" name="entry_date" type="date"
+                    placeholder="entry_date"
+                    value="{{!empty($budgetInfo->entry_date) ? getStringToDateFormat($budgetInfo->entry_date) : ''}}"
+                    required>
+            </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group mt-4 mb-0">
-            <button id="" class="btn btn-primary">{{!empty($buttonText) ? $buttonText : 'Save'}}</button>
+        <div class="col-md-6 float-left">
+            <div class="form-group mt-4 mb-0">
+                <button id="" class="btn btn-primary">{{!empty($buttonText) ? $buttonText : 'Save'}}</button>
+            </div>
         </div>
     </div>
 </div>

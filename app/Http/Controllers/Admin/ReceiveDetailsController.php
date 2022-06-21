@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Budget;
 use App\Receive_details;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mockery\Exception;
 
-class BudgetController extends Controller
+class ReceiveDetailsController extends Controller
 {
     protected $userObj;
-    protected $budgetObj;
+    protected $receiveDetailsObj;
     //
 
     /**
@@ -23,7 +22,6 @@ class BudgetController extends Controller
     public function __construct()
     {
         $this->userObj = new User();
-        $this->budgetObj = new Budget();
         $this->receiveDetailsObj = new Receive_details();
 //        $this->middleware('auth');
     }
@@ -41,10 +39,10 @@ class BudgetController extends Controller
             $userTypeAccessArray = array(1, 3);
             if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
                 $data = array(
-                    'pageTitle' => 'Budget',
-                    'budgetList' => $this->budgetObj->getAll(),
+                    'pageTitle' => 'Receive Details',
+                    'receiveDetailsList' => $this->receiveDetailsObj->getAll(),
                 );
-                return view('admin.budget.index')->with($data);
+                return view('admin.receive_details.index')->with($data);
             } else {
                 return redirect('admin/dashboard');
             }
@@ -61,11 +59,10 @@ class BudgetController extends Controller
             $userTypeAccessArray = array(1, 3);
             if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
                 $data = array(
-                    'pageTitle' => 'Create Budget',
+                    'pageTitle' => 'Create Receive Details',
                     'buttonText' => 'Save',
-                    'totalReceiveAmount' => $this->receiveDetailsObj->getTotalReceiveAmount(),
                 );
-                return view('admin.budget.add')->with($data);
+                return view('admin.receive_details.add')->with($data);
             } else {
                 return redirect('admin/dashboard');
             }
@@ -73,32 +70,30 @@ class BudgetController extends Controller
         return redirect()->route('adminSignin');
     }
 
-    public function budgetSave(Request $request)
+    public function receiveDetailsSave(Request $request)
     {
         try {
             $message = null;
-//            $this->budgetObj->checkValidation($request);
-            $this->budgetObj->cash_amount = doubleval(trim($request->input('cash_amount')));
-            $this->budgetObj->extra_amount_claimed = doubleval(trim($request->input('extra_amount_claimed')));
-            $this->budgetObj->total_allocated_funds = doubleval(trim($request->input('total_allocated_funds')));
-            $this->budgetObj->total_receive_amount = doubleval(trim($request->input('total_receive_amount')));
-            $this->budgetObj->funds_remaining = doubleval(trim($request->input('funds_remaining')));
-            $this->budgetObj->entry_date = (trim($request->input('entry_date')));
-            //$isExists = $this->budgetObj->isColumnValueExist('cost_name', $this->budgetObj->budget_name);
+//            $this->receiveDetailsObj->checkValidation($request);
+            $this->receiveDetailsObj->entry_date = trim($request->input('entry_date'));
+            $this->receiveDetailsObj->receive_amount = doubleVal(trim($request->input('receive_amount')));
+            $this->receiveDetailsObj->money_receipt_no = (trim($request->input('money_receipt_no')));
+            $this->receiveDetailsObj->remarks = trim($request->input('remarks'));
+            //$isExists = $this->receiveDetailsObj->isColumnValueExist('cost_name', $this->receiveDetailsObj->receive_amount);
             $isExists = false;
             if (!boolval($isExists)) { // if email does not exists
-                $result = $this->budgetObj->save();
+                $result = $this->receiveDetailsObj->save();
                 if (boolval($result)) {
                     $message = 'Information has been saved successfully.';
-                    return redirect()->route('budget');
+                    return redirect()->route('receiveDetails');
                 } else {
                     $message = 'Failed to save.';
-                    return redirect()->route('budgetCreate')
+                    return redirect()->route('receiveDetailsCreate')
                         ->with('error', $message);
                 }
             } else {
                 $message = 'The name has already been taken.';
-                return redirect()->route('budgetCreate')
+                return redirect()->route('receiveDetailsCreate')
                     ->with('error', $message);
             }
         } catch (Exception $e) {
@@ -110,18 +105,17 @@ class BudgetController extends Controller
     {
         $logginUserId = $this->userObj->getLoggedinUserId();
         if (($logginUserId) > 0 && intval($id) > 0) {
-            $budgetInfo = $this->budgetObj->getById($id);
-            if (!empty($budgetInfo)) {
+            $receiveDetailsInfo = $this->receiveDetailsObj->getById($id);
+            if (!empty($receiveDetailsInfo)) {
                 $loggedInUserInfo = $this->userObj->getById($logginUserId);
                 $userTypeAccessArray = array(1, 3);
                 if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
                     $data = array(
-                        'pageTitle' => 'Update Budget',
+                        'pageTitle' => 'Update Receive Details',
                         'buttonText' => 'Update',
-                        'budgetInfo' => $budgetInfo,
-                        'totalReceiveAmount' => $this->receiveDetailsObj->getTotalReceiveAmount(),
+                        'receiveDetailsInfo' => $receiveDetailsInfo,
                     );
-                    return view('admin.budget.edit')->with($data);
+                    return view('admin.receive_details.edit')->with($data);
                 } else {
                     return redirect('admin/dashboard');
                 }
@@ -132,43 +126,39 @@ class BudgetController extends Controller
         return redirect()->route('adminSignin');
     }
 
-    public function budgetUpdate(Request $request)
+    public function receiveDetailsUpdate(Request $request)
     {
         try {
             $message = null;
-//            $this->budgetObj->checkValidation($request);
+//            $this->receiveDetailsObj->checkValidation($request);
             $id = intval(trim($request->input('id')));
-            $cash_amount = doubleval(trim($request->input('cash_amount')));
-            $extra_amount_claimed = doubleval(trim($request->input('extra_amount_claimed')));
-            $total_allocated_funds = doubleval(trim($request->input('total_allocated_funds')));
-            $total_receive_amount = doubleval(trim($request->input('total_receive_amount')));
-            $funds_remaining = doubleval(trim($request->input('funds_remaining')));
-            $entry_date = trim($request->input('entry_date'));
-//            $isExists = $this->budgetObj->isColumnValueExist('cost_name', $budgetName, $id);
+            $entryDate = trim($request->input('entry_date'));
+            $receiveAmount = trim($request->input('receive_amount'));
+            $moneyReceiptNo = trim($request->input('money_receipt_no'));
+            $remarks = trim($request->input('remarks'));
+//            $isExists = $this->receiveDetailsObj->isColumnValueExist('receive_amount', $receiveAmount, $id);
             $isExists = false;
             if (!boolval($isExists)) { // if name does not exists
                 $data = array(
                     'id' => $id,
-                    'cash_amount' => $cash_amount,
-                    'extra_amount_claimed' => $extra_amount_claimed,
-                    'total_allocated_funds' => $total_allocated_funds,
-                    'total_receive_amount' => $total_receive_amount,
-                    'funds_remaining' => $funds_remaining,
-                    'entry_date' => $entry_date,
+                    'entry_date' => $entryDate,
+                    'receive_amount' => $receiveAmount,
+                    'money_receipt_no' => $moneyReceiptNo,
+                    'remarks' => $remarks,
                 );
-                $isUpdate = $this->budgetObj->updateData($data, $id);
+                $isUpdate = $this->receiveDetailsObj->updateData($data, $id);
                 if (boolval($isUpdate)) {
                     $message = 'Information has been updated successfully.';
-                    return redirect()->route('budget')
+                    return redirect()->route('receiveDetails')
                         ->with('success', $message);
                 } else {
                     $message = 'Failed to update.';
-                    return redirect()->route('budget', ['message' => $id])
+                    return redirect()->route('receiveDetails', ['message' => $id])
                         ->with('error', $message);
                 }
             } else {
                 $message = 'The email has already been taken.';
-                return redirect()->route('budgetEdit', ['id' => $id])
+                return redirect()->route('receiveDetailsEdit', ['id' => $id])
                     ->with('error', $message);
             }
         } catch (Exception $e) {
@@ -176,26 +166,26 @@ class BudgetController extends Controller
         }
     }
 
-    public function budgetDelete($id = 0)
+    public function receiveDetailsDelete($id = 0)
     {
         $logginUserId = $this->userObj->getLoggedinUserId();
         if (($logginUserId) > 0 && intval($id) > 0) {
-            $budgetInfo = $this->budgetObj->getById($id);
-            if (!empty($budgetInfo)) {
+            $receiveDetailsInfo = $this->receiveDetailsObj->getById($id);
+            if (!empty($receiveDetailsInfo)) {
                 $loggedInUserInfo = $this->userObj->getById($logginUserId);
                 $userTypeAccessArray = array(1, 3);
                 if (!empty($loggedInUserInfo) && in_array($loggedInUserInfo->user_type_id, $userTypeAccessArray)) {
-                    $isUpdate = $this->budgetObj->deleteWhere(array('id' => $id));
+                    $isUpdate = $this->receiveDetailsObj->deleteWhere(array('id' => $id));
                     if (boolval($isUpdate)) {
                         $message = 'Information has been deleted successfully.';
-                        return redirect()->route('budget')
+                        return redirect()->route('receiveDetails')
                             ->with('success', $message);
                     } else {
                         $message = 'Failed to delete.';
-                        return redirect()->route('budget', ['message' => $id])
+                        return redirect()->route('receiveDetails', ['message' => $id])
                             ->with('error', $message);
                     }
-                    return view('admin.budget.index')->with($data);
+                    return view('admin.receive_details.index')->with($data);
                 } else {
                     return redirect('admin/dashboard');
                 }

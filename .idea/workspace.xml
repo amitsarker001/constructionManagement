@@ -4,16 +4,17 @@
     <list default="true" id="11753012-29fa-4d9e-8fb9-edbefd7e7432" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Cost.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Cost_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cost_details.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BudgetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BudgetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ItemController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReportsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ReportsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PDF/TestPDF.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Payment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_05_07_122943_create_cost_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_05_07_122943_create_cost_details_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_05_27_200338_create_budgets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_05_27_200338_create_budgets_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/budget/formFields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/budget/formFields.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/sideNav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/cost_summary/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/reports/cost_summary/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/miscellaneous/formFields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/miscellaneous/formFields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/miscellaneous/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/miscellaneous/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/reports/stepwise_cost/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/reports/stepwise_cost/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/signin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/signin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,22 +138,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/reports/stepwise_cost" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/reports/itemwise_cost" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports\supplierwise" />
-      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\letter\pdfDesign" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports\itemwise_cost" />
       <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports\stepwise_cost" />
       <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\budget" />
       <recent name="F:\xampp\htdocs\constructionManagement\app\Http\Controllers\Admin" />
       <recent name="F:\xampp\htdocs\constructionManagement\app" />
-      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports\cost_summary" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\reports\supplierwise" />
+      <recent name="F:\xampp\htdocs\constructionManagement\resources\views\admin\letter\pdfDesign" />
     </key>
   </component>
   <component name="RunManager">
@@ -217,7 +218,11 @@
       <workItem from="1654875478503" duration="728000" />
       <workItem from="1655311869621" duration="3320000" />
       <workItem from="1655393586582" duration="40000" />
-      <workItem from="1655444861884" duration="7555000" />
+      <workItem from="1655444861884" duration="9893000" />
+      <workItem from="1655472760583" duration="805000" />
+      <workItem from="1655566909260" duration="598000" />
+      <workItem from="1655645323969" duration="621000" />
+      <workItem from="1655823800874" duration="7326000" />
     </task>
     <servers />
   </component>
@@ -253,10 +258,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1653027796885" />
-    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1655454003197">
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1655825255156">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1655454003197" />
+    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1655825255156" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1653663430189">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -68,7 +68,7 @@
                                     <td>{{ $userName }}</td>
                                 @endif
                                 <td>
-                                    <a style="margin: 1%" class="btn btn-danger float-right"
+                                    <a style="margin: 1%" class="btn btn-danger float-right deleteButton"
                                        href="{{route('miscellaneousDelete', ['id' => $id])}}"><i
                                             class="fa fa-trash" aria-hidden="true"></i>Delete</a>
                                     <a style="margin: 1%" class="btn btn-secondary float-right"
@@ -84,3 +84,11 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(".deleteButton").click(function () {
+        if (!confirm("Are you sure ?")) {
+            return false;
+        }
+    });
+</script>

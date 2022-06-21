@@ -99,6 +99,15 @@ Route::prefix('admin')->group(function () {
     Route::post('reports/costSummaryReportView', 'Admin\ReportsController@costSummaryReportView')->name('costSummaryReportView');
     Route::get('reports/stepwiseCostReport', 'Admin\ReportsController@stepwiseCostReport')->name('stepwiseCostReport');
     Route::post('reports/stepwiseCostReportView', 'Admin\ReportsController@stepwiseCostReportView')->name('stepwiseCostReportView');
+    Route::get('reports/itemwiseCostReport', 'Admin\ReportsController@itemwiseCostReport')->name('itemwiseCostReport');
+    Route::post('reports/itemwiseCostReportView', 'Admin\ReportsController@itemwiseCostReportView')->name('itemwiseCostReportView');
+
+    Route::get('receiveDetails', 'Admin\ReceiveDetailsController@index')->name('receiveDetails');
+    Route::get('receiveDetails/create', 'Admin\ReceiveDetailsController@create')->name('receiveDetailsCreate');
+    Route::post('receiveDetails/receiveDetailsSave', 'Admin\ReceiveDetailsController@receiveDetailsSave')->name('receiveDetailsSave');
+    Route::get('receiveDetails/edit/{id}', 'Admin\ReceiveDetailsController@edit')->name('receiveDetailsEdit');
+    Route::post('receiveDetails/receiveDetailsUpdate', 'Admin\ReceiveDetailsController@receiveDetailsUpdate')->name('receiveDetailsUpdate');
+    Route::get('receiveDetails/receiveDetailsDelete/{id}', 'Admin\ReceiveDetailsController@receiveDetailsDelete')->name('receiveDetailsDelete');
 
 });
 
